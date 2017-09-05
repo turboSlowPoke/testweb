@@ -8,6 +8,8 @@ import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import servlets.*;
+import servlets.lk.LkReferalsServlet;
+import servlets.lk.LkServicesServlet;
 import servlets.lk.LkServlet;
 
 
@@ -31,6 +33,8 @@ public class Main {
         contextHandler.addServlet(StatusPayServlet.class,"/status");
         contextHandler.addServlet(LoginServlets.class,"/login");
         contextHandler.addServlet(LkServlet.class,"/lk");
+        contextHandler.addServlet(LkReferalsServlet.class,"/lkreferals");
+        contextHandler.addServlet(LkServicesServlet.class,"/lkservices");
         contextHandler.addServlet(AdminLkServlet.class,"/admin");
         contextHandler.addServlet(LogoutServlet.class,"/logout");
         contextHandler.addServlet(faqServlet.class,"/FAQ");
