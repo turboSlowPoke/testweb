@@ -1,6 +1,7 @@
 package servlets.lk;
 
 import entitys.User;
+import templayter.PageGenerator;
 import validarors.SessionValidator;
 
 import javax.servlet.ServletException;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LkServicesServlet extends HttpServlet {
     SessionValidator validator = new SessionValidator();
@@ -26,6 +29,13 @@ public class LkServicesServlet extends HttpServlet {
                 endDateOfSubscription = user.getServices().getEndDateOfSubscription().toLocalDate().toString();
                 onetimeConsultation = user.getServices().getOnetimeConsultation()?"не оплачна":"оплачена";
             }
+            Map<String,String> dataMap = new HashMap<>();
+            dataMap.put("endDateOfSubscription",endDateOfSubscription);
+            dataMap.put("onetimeConsultation",onetimeConsultation);
+
+            resp.setStatus(HttpServletResponse.SC_OK);
+            resp.setContentType("text/html;charset=UTF-8");
+            resp.getWriter().append(PageGenerator.instance().getStaticPage("userslk-serv.html", dataMap));
         }else {
             resp.sendRedirect("/login");
         }
