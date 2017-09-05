@@ -1,6 +1,5 @@
-package servlets;
+package servlets.lk;
 
-import db_services.DbService;
 import entitys.PersonalData;
 import entitys.User;
 import org.apache.log4j.Logger;

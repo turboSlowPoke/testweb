@@ -157,7 +157,6 @@ public class DbService {
         tr.commit();
         em.close();
     }
-
     private boolean withoutRef(long userID) {
         boolean check = false;
         for (Long id : usersWithoutRef) {
@@ -167,6 +166,17 @@ public class DbService {
             }
         }
         return check;
+    }
+
+    public List<User> getReferals(User user, int levelReferals) {
+        EntityManager em = managerFactory.createEntityManager();
+        Query query = em.createQuery("SELECT u FROM User u WHERE u.leftKey>:lk AND u.rightKey<:rk AND u.level=:l")
+                .setParameter("lk",user.getLeftKey())
+                .setParameter("rk",user.getRightKey())
+                .setParameter("l",user.getLevel()+levelReferals);
+        List<User> users = query.getResultList();
+        em.close();
+        return users;
     }
 
 }
