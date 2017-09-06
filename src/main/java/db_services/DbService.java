@@ -168,7 +168,7 @@ public class DbService {
         return check;
     }
 
-    public List<User> getReferals(User user, int levelReferals) {
+    public synchronized List<User> getReferals(User user, int levelReferals) {
         EntityManager em = managerFactory.createEntityManager();
         Query query = em.createQuery("SELECT u FROM User u WHERE u.leftKey>:lk AND u.rightKey<:rk AND u.level=:l")
                 .setParameter("lk",user.getLeftKey())
@@ -179,4 +179,33 @@ public class DbService {
         return users;
     }
 
+    public synchronized Integer getSumAllUsers() {
+        EntityManager em = managerFactory.createEntityManager();
+        Query query = em.createQuery("SELECT u FROM User u");
+        List<User> users = query.getResultList();
+        em.clear();
+        em.close();
+        return users!=null?users.size():0;
+    }
+
+    public synchronized Integer getSumSubscribers() {
+        EntityManager em = managerFactory.createEntityManager();
+        Query query = em.createQuery("SELECT u FROM User u JOIN u.services s  WHERE s.endDateOfSubscription>:d OR s.unlimitSubscription=:b")
+                .setParameter("d",LocalDateTime.now())
+                .setParameter("b",true);
+        List<User> users = query.getResultList();
+        em.clear();
+        em.close();
+        return users!=null?users.size():0;
+    }
+
+    public synchronized Integer getSumVip() {
+        EntityManager em = managerFactory.createEntityManager();
+        Query query = em.createQuery("SELECT u FROM User u JOIN u.services s  WHERE s.unlimitSubscription=:b")
+                .setParameter("b",true);
+        List<User> users = query.getResultList();
+        em.clear();
+        em.close();
+        return users!=null?users.size():0;
+    }
 }
