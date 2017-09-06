@@ -32,7 +32,7 @@ public class PageGenerator {
         return pageGenerator;
     }
 
-    public String getStaticPage(String fileName, Map<String,String> dataMap){
+    public String getStaticPage(String fileName, Map<String,Object> dataMap){
         Writer writer = new StringWriter();
         try {
             Template template = cfg.getTemplate(fileName);
