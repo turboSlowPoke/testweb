@@ -84,7 +84,7 @@ public class LoginServlets extends HttpServlet {
             attempt = (int)session.getAttribute("attempt");
         attempt++;
         String failTag = "<p class=\"lead\"><b class=\"text-danger\">Неправильный Login/Password!</b></p>";
-        Map<String,String> dataMap = new HashMap<>();
+        Map<String,Object> dataMap = new HashMap<>();
         dataMap.put("failTag",failTag);
         resp.setStatus(HttpServletResponse.SC_OK);
         resp.setContentType("text/html;charset=UTF-8");
@@ -132,7 +132,7 @@ public class LoginServlets extends HttpServlet {
     }
 
     private void sendLoginPage(HttpServletResponse resp) throws IOException {
-        Map<String, String> dataMap = new HashMap<>();
+        Map<String, Object> dataMap = new HashMap<>();
         dataMap.put("failTag", "");
         resp.setStatus(HttpServletResponse.SC_OK);
         resp.setContentType("text/html;charset=UTF-8");

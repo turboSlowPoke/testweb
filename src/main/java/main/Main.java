@@ -8,6 +8,7 @@ import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import servlets.*;
+import servlets.adminlk.AdminLkPaimendsServlet;
 import servlets.adminlk.AdminLkServlet;
 import servlets.lk.LkReferalsServlet;
 import servlets.lk.LkServicesServlet;
@@ -37,6 +38,7 @@ public class Main {
         contextHandler.addServlet(LkReferalsServlet.class,"/lkreferals");
         contextHandler.addServlet(LkServicesServlet.class,"/lkservices");
         contextHandler.addServlet(AdminLkServlet.class,"/admin");
+        contextHandler.addServlet(AdminLkPaimendsServlet.class,"/admin-payments");
         contextHandler.addServlet(LogoutServlet.class,"/logout");
         contextHandler.addServlet(faqServlet.class,"/FAQ");
         contextHandler.addServlet(aboutServlet.class,"/about");

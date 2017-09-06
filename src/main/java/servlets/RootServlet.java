@@ -37,7 +37,7 @@ public class RootServlet extends HttpServlet {
                 String authForm = "<p class=\"pi-draggable\">Вы вошли как:</p>\n" +
                         "          <p class=\"pi-draggable lead\">"+user.getLogin()+"</p>\n" +
                         "          <a href=\"/logout?pagePath=/\" class=\"btn btn-outline-primary pi-draggable\">Выйти</a>";
-                Map<String,String> dataMap = new HashMap<>();
+                Map<String,Object> dataMap = new HashMap<>();
                 dataMap.put("authForm",authForm);
                 resp.setStatus(HttpServletResponse.SC_OK);
                 resp.setContentType("text/html;charset=UTF-8");
@@ -56,7 +56,7 @@ public class RootServlet extends HttpServlet {
                     "              <input type=\"hidden\" name=\"pagePath\" value=\"/\" />" +
                     "            <button type=\"submit\" class=\"btn btn-primary\">Login</button>\n" +
                     "          </form>";
-            Map<String,String> dataMap = new HashMap<>();
+            Map<String,Object> dataMap = new HashMap<>();
             dataMap.put("authForm",authForm);
             resp.setStatus(HttpServletResponse.SC_OK);
             resp.setContentType("text/html;charset=UTF-8");

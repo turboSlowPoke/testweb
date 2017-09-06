@@ -29,7 +29,7 @@ public class AdminLkServlet extends HttpServlet {
             Integer sumUsersWithActiveSubscription = DbService.getInstance().getSumSubscribers();
             Integer sumVipUsers = DbService.getInstance().getSumVip();
 
-            Map<String,String> dataMap = new HashMap<>();
+            Map<String,Object> dataMap = new HashMap<>();
             dataMap.put("sumAllUsers",sumAllUsers.toString());
             dataMap.put("sumSubscribers",sumUsersWithActiveSubscription.toString());
             dataMap.put("sumVipUsers",sumVipUsers.toString());

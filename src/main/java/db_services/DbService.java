@@ -185,7 +185,7 @@ public class DbService {
         List<User> users = query.getResultList();
         em.clear();
         em.close();
-        return users!=null?users.size():0;
+        return users==null?0:users.size();
     }
 
     public synchronized Integer getSumSubscribers() {

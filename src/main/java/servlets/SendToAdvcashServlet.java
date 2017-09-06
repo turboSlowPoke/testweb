@@ -65,7 +65,7 @@ public class SendToAdvcashServlet extends HttpServlet {
                 String ac_order_id = ""+userId+"_"+typeOfParchase+"-"+stringDateTime;
                 String ac_sign="";
 
-                Map<String, String> dataMap = new HashMap<>();
+                Map<String, Object> dataMap = new HashMap<>();
                 dataMap.put("ac_order_id",ac_order_id);
                 dataMap.put("ac_amount",ac_amount);
                 dataMap.put("ac_comments", ac_comments);

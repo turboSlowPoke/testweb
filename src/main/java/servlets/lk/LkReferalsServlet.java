@@ -50,7 +50,7 @@ public class LkReferalsServlet extends HttpServlet {
 
             }
 
-            Map<String,String> dataMap = new HashMap<>();
+            Map<String,Object> dataMap = new HashMap<>();
             dataMap.put("referals1",sumReferals1);
             dataMap.put("referals2",sumReferals2);
             dataMap.put("referals3",sumReferals3);

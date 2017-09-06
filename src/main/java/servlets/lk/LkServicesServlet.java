@@ -29,7 +29,7 @@ public class LkServicesServlet extends HttpServlet {
                 endDateOfSubscription = user.getServices().getEndDateOfSubscription().toLocalDate().toString();
                 onetimeConsultation = user.getServices().getOnetimeConsultation()?"не оплачна":"оплачена";
             }
-            Map<String,String> dataMap = new HashMap<>();
+            Map<String,Object> dataMap = new HashMap<>();
             dataMap.put("endDateOfSubscription",endDateOfSubscription);
             dataMap.put("onetimeConsultation",onetimeConsultation);
 

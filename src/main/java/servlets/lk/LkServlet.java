@@ -26,7 +26,7 @@ public class LkServlet extends HttpServlet {
             User user = (User) session.getAttribute("user");
             PersonalData userData = user.getPersonalData();
 
-            Map<String,String> dataMap = new HashMap<>();
+            Map<String,Object> dataMap = new HashMap<>();
             dataMap.put("firstName",userData.getFirstName()==null?"-":userData.getFirstName());
             dataMap.put("lastName",userData.getLastName()==null?"-":userData.getLastName());
             dataMap.put("userNameTelegram",userData.getUserNameTelegram()==null?"-":userData.getUserNameTelegram());
