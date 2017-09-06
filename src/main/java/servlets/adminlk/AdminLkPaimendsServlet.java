@@ -28,7 +28,7 @@ public class AdminLkPaimendsServlet extends HttpServlet {
         if (validator.isAuthorizedAsAdmin(session)){
             List<AdvcashTransaction> acTransactions = DbService.getInstance().getAcTransacrions();
             List<Payment> payments = new ArrayList<>();
-            Map<String,List<Payment>> dataMap = new HashMap<>();
+            Map<String,Object> dataMap = new HashMap<>();
             for (AdvcashTransaction t : acTransactions)
                     payments.add(new Payment(t));
             dataMap.put("payments",payments);
