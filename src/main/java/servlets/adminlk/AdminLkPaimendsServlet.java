@@ -34,7 +34,6 @@ public class AdminLkPaimendsServlet extends HttpServlet {
             for (AdvcashTransaction t : acTransactions) {
                 acPayments.add(new AcPayment(t));
             }
-
             //достаём начисления по рефке, конвертируем в refPayments
             List<LocalTransaction> localTransactions = DbService.getInstance().getLocalTransactions();
             List<RefPayment> refPayments = new ArrayList<>();
