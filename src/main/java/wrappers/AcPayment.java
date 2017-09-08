@@ -2,15 +2,14 @@ package wrappers;
 
 import entitys.AdvcashTransaction;
 
-public class Payment {
-    private AdvcashTransaction advcashTransaction;
+public class AcPayment {
     private String date;
     private String userName;
     private String service;
     private String amountPayment;
 
-    public Payment(AdvcashTransaction advcashTransaction) {
-        this.advcashTransaction = advcashTransaction;
+
+    public AcPayment(AdvcashTransaction advcashTransaction) {
         this.date = advcashTransaction.getAc_start_date().toLocalDate().toString();
         this.userName = advcashTransaction.getUser().getPersonalData().getUserNameTelegram();
         String orderId = advcashTransaction.getAc_order_id();
@@ -32,5 +31,12 @@ public class Payment {
 
     public String getAmountPayment() {
         return amountPayment;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "date: "+date+", username: "+userName+", service: "+service+"amount: "+amountPayment;
     }
 }

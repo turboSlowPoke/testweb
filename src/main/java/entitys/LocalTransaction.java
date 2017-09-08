@@ -39,7 +39,7 @@ public class LocalTransaction {
         return amount;
     }
 
-    public User getChildrenUser() {
+    public User getUser() {
         return childrenUsers==null? null : childrenUsers.get(0);
     }
 }

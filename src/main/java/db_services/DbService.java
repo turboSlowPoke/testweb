@@ -211,11 +211,21 @@ public class DbService {
 
     public List<AdvcashTransaction> getAcTransacrions() {
         EntityManager em = managerFactory.createEntityManager();
-        Query query = em.createQuery("SELECT tr FROM AdvcashTransaction tr WHERE tr.ac_start_date>:t")
+        Query query = em.createQuery("SELECT tr FROM AdvcashTransaction tr WHERE tr.ac_start_date>:t" )
                 .setParameter("t",LocalDateTime.of(2017,8,28,00,00,00));
         List<AdvcashTransaction> acTransacrions = query.getResultList();
         em.clear();
         em.close();
         return acTransacrions;
+    }
+
+    public List<LocalTransaction> getLocalTransactions() {
+        EntityManager em = managerFactory.createEntityManager();
+        Query query = em.createQuery("SELECT tr FROM LocalTransaction tr WHERE tr.dateTime>:t" )
+                .setParameter("t",LocalDateTime.of(2017,8,28,00,00,00));
+        List<LocalTransaction> localTransactions  = query.getResultList();
+        em.clear();
+        em.close();
+        return localTransactions;
     }
 }

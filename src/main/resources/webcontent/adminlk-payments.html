@@ -41,10 +41,10 @@
         <div class="col-md-12">
           <ul class="nav nav-tabs">
             <li class="nav-item">
-              <a href="#" class="nav-link">Общая статистика</a>
+              <a href="/admin" class="nav-link">Общая статистика</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="active nav-link">Оплата</a>
+              <a href="/admin-payments" class="active nav-link">Оплата</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Заявки</a>
@@ -57,6 +57,7 @@
   <div class="py-5">
     <div class="container">
       <div class="row">
+        <p class="lead pi-draggable" draggable="true">Оплаты в AdvCash</p>
         <div class="col-md-12">
           <table class="table">
             <thead>
@@ -68,14 +69,42 @@
               </tr>
             </thead>
             <tbody>
-            <#list payments as payment>
+            <#list acPayments as acPayment>
               <tr>
-                <td> ${payment.date} </td>
-                <td> ${payment.userName} </td>
-                <td> ${payment.service} </td>
-                <td> ${payment.amountPayment} </td>
+                <td> ${acPayment.date} </td>
+                <td> ${acPayment.userName} </td>
+                <td> ${acPayment.service} </td>
+                <td> ${acPayment.amountPayment} </td>
               </tr>
-            </#list>
+              </#list>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <p class="lead pi-draggable" draggable="true">Начисления по рефералке</p>
+        <div class="col-md-12">
+          <table class="table">
+            <thead>
+
+              <tr>
+                <th>Дата</th>
+                <th>@username</th>
+                <th>$</th>
+              </tr>
+            </thead>
+            <tbody>
+              <#list refPayments as refPayment>
+              <tr>
+                <td> ${refPayment.date} </td>
+                <td> ${refPayment.userName} </td>
+                <td> ${refPayment.amountPayment} </td>
+              </tr>
+              </#list>
             </tbody>
           </table>
         </div>

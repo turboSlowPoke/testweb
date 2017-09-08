@@ -2,10 +2,12 @@ package servlets.adminlk;
 
 import db_services.DbService;
 import entitys.AdvcashTransaction;
+import entitys.LocalTransaction;
 import org.apache.log4j.Logger;
 import templayter.PageGenerator;
 import validarors.SessionValidator;
-import wrappers.Payment;
+import wrappers.AcPayment;
+import wrappers.RefPayment;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,12 +28,24 @@ public class AdminLkPaimendsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(false);
         if (validator.isAuthorizedAsAdmin(session)){
+            //достаём транзакции AС, конвертируем в AcPayment
             List<AdvcashTransaction> acTransactions = DbService.getInstance().getAcTransacrions();
-            List<Payment> payments = new ArrayList<>();
+            List<AcPayment> acPayments =  new ArrayList<>();
+            for (AdvcashTransaction t : acTransactions) {
+                acPayments.add(new AcPayment(t));
+            }
+
+            //достаём начисления по рефке, конвертируем в refPayments
+            List<LocalTransaction> localTransactions = DbService.getInstance().getLocalTransactions();
+            List<RefPayment> refPayments = new ArrayList<>();
+            for (LocalTransaction t : localTransactions){
+                refPayments.add(new RefPayment(t));
+            }
+
             Map<String,Object> dataMap = new HashMap<>();
-            for (AdvcashTransaction t : acTransactions)
-                    payments.add(new Payment(t));
-            dataMap.put("payments",payments);
+            dataMap.put("acPayments",acPayments);
+            dataMap.put("refPayments",refPayments);
+
             resp.setStatus(HttpServletResponse.SC_OK);
             resp.setContentType("text/html;charset=UTF-8");
             resp.getWriter().append(PageGenerator.instance().getStaticPage("adminlk-payments.html", dataMap));
