@@ -3,13 +3,14 @@ package wrappers;
 import entitys.AdvcashTransaction;
 
 public class AcPayment {
+    private AdvcashTransaction advcashTransaction;
     private String date;
     private String userName;
     private String service;
     private String amountPayment;
 
-
     public AcPayment(AdvcashTransaction advcashTransaction) {
+        this.advcashTransaction = advcashTransaction;
         this.date = advcashTransaction.getAc_start_date().toLocalDate().toString();
         this.userName = advcashTransaction.getUser().getPersonalData().getUserNameTelegram();
         String orderId = advcashTransaction.getAc_order_id();
@@ -31,12 +32,5 @@ public class AcPayment {
 
     public String getAmountPayment() {
         return amountPayment;
-    }
-
-
-
-    @Override
-    public String toString() {
-        return "date: "+date+", username: "+userName+", service: "+service+"amount: "+amountPayment;
     }
 }

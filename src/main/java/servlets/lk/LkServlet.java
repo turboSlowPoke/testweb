@@ -1,5 +1,6 @@
 package servlets.lk;
 
+import configs.TagsEnum;
 import entitys.PersonalData;
 import entitys.User;
 import org.apache.log4j.Logger;
@@ -32,6 +33,7 @@ public class LkServlet extends HttpServlet {
             dataMap.put("userNameTelegram",userData.getUserNameTelegram()==null?"-":userData.getUserNameTelegram());
             dataMap.put("advcashWallet",userData.getAdvcashWallet()==null?"-":userData.getAdvcashWallet());
             dataMap.put("accountCryptoCompare",userData.getAccountCryptoCompare()==null?"-":userData.getAccountCryptoCompare());
+            dataMap.put("adminTag",user.getTypeUser().equals("manager")? TagsEnum.adminTag:"");
 
             resp.setStatus(HttpServletResponse.SC_OK);
             resp.setContentType("text/html;charset=UTF-8");

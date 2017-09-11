@@ -3,7 +3,6 @@ package servlets;
 import db_services.DbService;
 import db_services.NoLoginInDbException;
 import entitys.User;
-import exceptions.NoUserInSessionException;
 import exceptions.UncorrectLoginException;
 import exceptions.UncorrectPasswordException;
 import exceptions.WrongPasswordException;

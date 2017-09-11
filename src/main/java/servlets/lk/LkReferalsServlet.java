@@ -1,5 +1,6 @@
 package servlets.lk;
 
+import configs.TagsEnum;
 import db_services.DbService;
 import entitys.User;
 import org.apache.log4j.Logger;
@@ -55,6 +56,7 @@ public class LkReferalsServlet extends HttpServlet {
             dataMap.put("referals2",sumReferals2);
             dataMap.put("referals3",sumReferals3);
             dataMap.put("paidReferals",sumPaidReferals);
+            dataMap.put("adminTag",user.getTypeUser().equals("manager")? TagsEnum.adminTag:"");
 
             resp.setStatus(HttpServletResponse.SC_OK);
             resp.setContentType("text/html;charset=UTF-8");

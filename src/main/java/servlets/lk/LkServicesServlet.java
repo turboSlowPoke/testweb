@@ -1,5 +1,6 @@
 package servlets.lk;
 
+import configs.TagsEnum;
 import entitys.User;
 import templayter.PageGenerator;
 import validarors.SessionValidator;
@@ -32,6 +33,7 @@ public class LkServicesServlet extends HttpServlet {
             Map<String,Object> dataMap = new HashMap<>();
             dataMap.put("endDateOfSubscription",endDateOfSubscription);
             dataMap.put("onetimeConsultation",onetimeConsultation);
+            dataMap.put("adminTag",user.getTypeUser().equals("manager")? TagsEnum.adminTag:"");
 
             resp.setStatus(HttpServletResponse.SC_OK);
             resp.setContentType("text/html;charset=UTF-8");
