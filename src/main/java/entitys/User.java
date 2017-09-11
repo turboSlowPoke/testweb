@@ -24,7 +24,7 @@ public class User implements Serializable {
     private String password;
 
     @ManyToMany(mappedBy = "users",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private List<Tasks> tasks;
+    private List<Task> tasks;
 
     @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Services services;

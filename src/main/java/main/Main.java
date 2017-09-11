@@ -10,6 +10,7 @@ import org.eclipse.jetty.servlet.ServletHolder;
 import servlets.*;
 import servlets.adminlk.AdminLkPaimendsServlet;
 import servlets.adminlk.AdminLkServlet;
+import servlets.adminlk.AdminLkTasksServlet;
 import servlets.lk.LkReferalsServlet;
 import servlets.lk.LkServicesServlet;
 import servlets.lk.LkServlet;
@@ -39,6 +40,7 @@ public class Main {
         contextHandler.addServlet(LkServicesServlet.class,"/lkservices");
         contextHandler.addServlet(AdminLkServlet.class,"/admin");
         contextHandler.addServlet(AdminLkPaimendsServlet.class,"/admin-payments");
+        contextHandler.addServlet(AdminLkTasksServlet.class,"/admin-tasks");
         contextHandler.addServlet(LogoutServlet.class,"/logout");
         contextHandler.addServlet(faqServlet.class,"/FAQ");
         contextHandler.addServlet(aboutServlet.class,"/about");

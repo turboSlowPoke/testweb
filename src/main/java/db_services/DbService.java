@@ -2,9 +2,7 @@ package db_services;
 
 import calculates.CalculateOfPayment;
 import configs.TypeOfPurchase;
-import entitys.AdvcashTransaction;
-import entitys.LocalTransaction;
-import entitys.User;
+import entitys.*;
 import org.apache.log4j.Logger;
 import org.eclipse.persistence.config.CacheUsage;
 import org.eclipse.persistence.config.QueryHints;
@@ -227,5 +225,15 @@ public class DbService {
         em.clear();
         em.close();
         return localTransactions;
+    }
+
+    public List<Task> getTasks(String taskStatus) {
+        EntityManager em = managerFactory.createEntityManager();
+        Query query = em.createQuery("SELECT t FROM Task t WHERE t.status=:s" )
+                .setParameter("s",taskStatus);
+        List<Task> tasks  = query.getResultList();
+        em.clear();
+        em.close();
+        return tasks;
     }
 }
