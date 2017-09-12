@@ -44,6 +44,7 @@ public class Main {
         contextHandler.addServlet(LogoutServlet.class,"/logout");
         contextHandler.addServlet(faqServlet.class,"/FAQ");
         contextHandler.addServlet(aboutServlet.class,"/about");
+        contextHandler.addServlet(NewsServlet.class,"/news");
         server.setHandler(contextHandler);
         server.start();
         log.info("*******Server started*********");

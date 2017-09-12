@@ -43,7 +43,7 @@ public class RootServlet extends HttpServlet {
 
             resp.setStatus(HttpServletResponse.SC_OK);
             resp.setContentType("text/html;charset=UTF-8");
-            resp.getWriter().append(PageGenerator.instance().getStaticPage("root.html", dataMap));
+            resp.getWriter().append(PageGenerator.instance().getStaticPage("root01.html", dataMap));
 
         } else {
             String authForm = " <form class=\"\" action=\"/login\" method=\"post\">\n" +
@@ -58,7 +58,7 @@ public class RootServlet extends HttpServlet {
             dataMap.put("authForm",authForm);
             resp.setStatus(HttpServletResponse.SC_OK);
             resp.setContentType("text/html;charset=UTF-8");
-            resp.getWriter().append(PageGenerator.instance().getStaticPage("root.html", dataMap));
+            resp.getWriter().append(PageGenerator.instance().getStaticPage("root01.html", dataMap));
         }
     }
 }
