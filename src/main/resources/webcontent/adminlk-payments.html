@@ -5,63 +5,73 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-beta.1.css" type="text/css"> </head>
+  <link rel="stylesheet" href="./static/styles/adminlk-payments.css" type="text/css">
+  <link rel="icon" href="./static/images/logo_nw_16х16.png">
+  <title>New Wave</title>
+</head>
 
 <body>
-  <nav class="navbar fixed-top navbar-expand-md navbar-light bg-faded text-center">
+  <nav id="s_navbar1" class="navbar fixed-top navbar-expand-md navbar-light bg-light">
     <div class="container">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-      <div class="collapse navbar-collapse text-center justify-content-center" id="navbar2SupportedContent">
+      <a class="navbar-brand text-black" href="#"><i class="fa fa-line-chart" aria-hidden="true"></i> <b>New Wave</b></a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+      <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
         <ul class="navbar-nav">
           <li class="nav-item ">
             <a class="nav-link" href="/"><i class="fa fa-home fa-home"></i>&nbsp;Главная</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./about.html">О нас</a>
+          <li class="nav-item ">
+            <a class="nav-link" href="/news"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Новости</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="http://new-wave.io/#price">Цены</a>
+            <a class="nav-link" href="/info"><i class="fa fa-info" aria-hidden="true"></i> Информация</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./FAQ.html">FAQ</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/#contacts">Контакты </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/lk">Личный кабинет</a>
+            <a class="nav-link" href="/lk"><i class="fa fa-user-o" aria-hidden="true"></i> Кабинет</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="/lk">AdminLK</a>
+            <a class="nav-link" href="/lk"><i class="fa fa-bolt" aria-hidden="true"></i> admin</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Войти</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
   <div class="py-5">
-    <div class="container">
+    <div class="container pt-3">
       <div class="row">
         <div class="col-md-12">
           <ul class="nav nav-tabs">
             <li class="nav-item">
-              <a href="/admin" class="nav-link">Общая статистика</a>
+              <a href="/admin" class="nav-link text-primary">Общая статистика</a>
             </li>
             <li class="nav-item">
               <a href="/admin-payments" class="active nav-link">Оплата</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/admin-tasks">Заявки</a>
+              <a class="nav-link text-primary" href="/admin-tasks">Заявки</a>
             </li>
           </ul>
         </div>
       </div>
     </div>
   </div>
-  <div class="py-5">
+  <div class="py-1">
     <div class="container">
       <div class="row">
-        <p class="lead pi-draggable" draggable="true">Оплаты в AdvCash</p>
         <div class="col-md-12">
+          <p class="lead bg-primary text-white">&nbsp;Оплата в AdvCash</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-1">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 border border-primary"> &lt;#list acPayments as acPayment&gt;
           <table class="table">
             <thead>
               <tr>
@@ -72,28 +82,34 @@
               </tr>
             </thead>
             <tbody>
-            <#list acPayments as acPayment>
               <tr>
                 <td> ${acPayment.date} </td>
                 <td> ${acPayment.userName} </td>
                 <td> ${acPayment.service} </td>
                 <td> ${acPayment.amountPayment} </td>
               </tr>
-              </#list>
+              <!--#list-->
             </tbody>
           </table>
         </div>
       </div>
     </div>
   </div>
-  <div class="py-5">
+  <div class="pt-5">
     <div class="container">
       <div class="row">
-        <p class="lead pi-draggable" draggable="true">Начисления по рефералке</p>
         <div class="col-md-12">
+          <p class="lead bg-primary text-white">&nbsp;Начислено по рефералке</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-1">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 border border-primary"> &lt;#list refPayments as refPayment&gt;
           <table class="table">
             <thead>
-
               <tr>
                 <th>Дата</th>
                 <th>@username</th>
@@ -101,13 +117,12 @@
               </tr>
             </thead>
             <tbody>
-              <#list refPayments as refPayment>
               <tr>
                 <td> ${refPayment.date} </td>
                 <td> ${refPayment.userName} </td>
                 <td> ${refPayment.amountPayment} </td>
               </tr>
-              </#list>
+              <!--#list-->
             </tbody>
           </table>
         </div>
