@@ -3,12 +3,12 @@
 // Semantic color scheme
 $theme-colors: (
   primary: #20B2AA,
-  secondary: #FFFAF0,
+  secondary: #868e96,
   success: #28a745,
-  info: #17a2b8,
+  info: #007bff,
   warning: #ffc107,
   danger: #dc3545,
-  light: #ffffff,
+  light: #f8f9fa,
   dark: #343a40
 );
 
@@ -49,12 +49,9 @@ $display2-size: 5.5 * $font-size-base;
 $display3-size: 4.5 * $font-size-base;
 $display4-size: 3.5 * $font-size-base;
 
-$border-radius: 0px;
+$border-radius: .25rem;
 
 
-
-$border-radius-lg: $border-radius * 1.2;
-$border-radius-sm: $border-radius * .8;
 @import 'bootstrap-4.0.0-beta.1';
 
 

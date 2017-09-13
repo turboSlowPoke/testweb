@@ -7,53 +7,34 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="./static/styles/news.css" type="text/css"> </head>
 
-<body class="py-5">
-  <nav class="navbar fixed-top navbar-expand-md navbar-light bg-faded text-center bg-light">
+<body>
+  <nav id="s_navbar1" class="navbar fixed-top navbar-expand-md navbar-light bg-light">
     <div class="container">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-      <div class="collapse navbar-collapse text-center justify-content-center" id="navbar2SupportedContent">
+      <a class="navbar-brand text-black" href="#"><i class="fa fa-line-chart" aria-hidden="true"></i> <b>New Wave</b></a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+      <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
         <ul class="navbar-nav">
           <li class="nav-item ">
             <a class="nav-link" href="/"><i class="fa fa-home fa-home"></i>&nbsp;Главная</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="/">Новости</a>
-          </li>
-          <a class="nav-link" href="./about.html">О нас</a>
-          <li class="nav-item">
-            <a class="nav-link" href="http://new-wave.io/#price">Цены</a>
+            <a class="nav-link" href="/news"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Новости</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./FAQ.html">FAQ</a>
+            <a class="nav-link" href="/info"><i class="fa fa-info" aria-hidden="true"></i> Информация</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/#contacts">Контакты </a>
+            <a class="nav-link" href="/lk"><i class="fa fa-user-o" aria-hidden="true"></i> Кабинет</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/lk">Личный кабинет</a>
-          </li> &lt;#if adminTag??&gt;${adminTag}
-          <!--#if-->
+            <a class="nav-link" href="/login?pagePath=/"><i class="fa fa-sign-in" aria-hidden="true"></i> Войти</a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
-  <div class="py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <ul class="nav nav-tabs">
-            <li class="nav-item">
-              <a href="/admin" class="nav-link active">Полезная информация</a>
-            </li>
-            <li class="nav-item">
-              <a href="/admin-payments" class="nav-link text-primary">Новости проекта</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="py-1">
+  <div class="pt-5 py-1">
     <div class="container border border-info">
       <p class="lead text-white my-5 bg-primary"> &nbsp;Новость 1 &nbsp;день/месяц/год</p>
       <div class="row">
@@ -101,7 +82,7 @@
                 Бла Бла&nbsp;Бла Бла Бла</p>
             </div>
             <div class="col-md-5">
-              <div class="py-5 text-center pi-draggable bg-light" id="discover" draggable="true">
+              <div class="py-5 text-center pi-draggable bg-light" draggable="true" id="discover">
                 <div class="container">
                   <div class="row">
                     <div class="col-md-3 col-6 p-1">
@@ -215,6 +196,26 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="s_footer3" class="bg-dark">
+    <div class="container">
+      <div class="row">
+        <div class="p-4 col-md-12">
+          <h2 class="mb-4 text-secondary"><i class="fa fa-id-card" aria-hidden="true"></i> Контакты</h2>
+          <p>
+            <a href="https://t.me/NewWave_bot" class="text-white"><i class="fa fa-telegram fa-1x" aria-hidden="true"></i> Группа в "Telegram"</a>
+          </p>
+          <p>
+            <a href="mailto:info@new-wave.io" class="text-white"><i class="fa d-inline mr-3 text-secondary fa-envelope-o"></i>info@new-wave.io</a>
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 mt-3">
+          <p class="text-center text-white">© Copyright 2017 "New Wave". </p>
         </div>
       </div>
     </div>

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="./static/styles/login.css" type="text/css">
+  <link rel="stylesheet" href="./static/styles/info-contacts.css" type="text/css">
   <link rel="icon" href="./static/images/logo_nw_16х16.png"> </head>
 
 <body>
@@ -22,35 +22,60 @@
           <li class="nav-item ">
             <a class="nav-link" href="/news"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Новости</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="/info"><i class="fa fa-info" aria-hidden="true"></i> Информация</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/lk"><i class="fa fa-user-o" aria-hidden="true"></i> Кабинет</a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Войти</a>
+          <li class="nav-item">
+            <a class="nav-link" href="/login?pagePath=/"><i class="fa fa-sign-in" aria-hidden="true"></i> Войти</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-  <div class="py-5">
+  <div class="pt-5">
     <div class="container">
       <div class="row">
-        <div class="col-md-4">
-          <img class="img-fluid d-block py-5 w-50" src="./static/images/logo_nw.png"> </div>
-        <div class="col-md-4">
-          <form class="pi-draggable py-5" action="/login" method="post">
-            <div class="form-group"> ${failTag} <label>Login</label>
-              <input type="text" class="form-control" placeholder="@login" name="username"> </div>
-            <div class="form-group"> <label>Password</label>
-              <input type="password" class="form-control" placeholder="password" name="password"> </div>
-            <button type="submit" class="btn btn-primary">Login</button>
-          </form>
-          <p id="c_p" class="">Чтобы получить логин и пароль пообщайтесь с нашим <b><a href="https://t.me/NewWave_bot" class="text-primary"> ботом</a>.</b> </p>
+        <div class="col-md-12">
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a href="/lk" class="nav-link text-primary">О нас</a>
+            </li>
+            <li class="nav-item">
+              <a href="/lkreferals" class="nav-link text-primary">FAQ</a>
+            </li>
+            <li class="nav-item">
+              <a class="active nav-link" href="/info-contacts"> Контакты</a>
+            </li>
+          </ul>
         </div>
-        <div class="col-md-4"></div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-faded py-5" id="contacts">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p class="lead bg-primary text-white" id="c_lead">&nbsp;Контакты</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <p class="border border-primary">В данный момент мы не хотим арендовать душный офис.
+            <br>
+            <br>Все впоросы вы можете задать в нашей &nbsp;
+            <a href="https://t.me/NewWave_bot" class="text-info">
+              <u><b>группе</b> <i class="fa fa-telegram fa-2x" aria-hidden="true"></i></u>
+            </a>.&nbsp;
+            <br>&nbsp;
+            <br>Конечно, для серьёзных писем у нас есть почта
+            <a href="mailto:info@new-wave.io">
+              <u>info@new-wave.io</u>
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   </div>

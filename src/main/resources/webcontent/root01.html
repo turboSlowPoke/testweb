@@ -5,37 +5,32 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="static/styles/root01.css" type="text/css">
-  <link rel="icon" href="static\images\logo_nw_16х16.png"> </head>
+  <link rel="stylesheet" href="./static/styles/root01.css" type="text/css">
+  <link rel="icon" href="./static/images/logo_nw_16х16.png"> </head>
 
 <body>
-  <nav class="navbar fixed-top navbar-expand-md navbar-light bg-faded text-center bg-light">
-    <div class="container-fluid">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-      <div class="collapse navbar-collapse text-center justify-content-center" id="navbar2SupportedContent">
+  <nav id="s_navbar1" class="navbar fixed-top navbar-expand-md navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand text-black" href="#"><i class="fa fa-line-chart" aria-hidden="true"></i> <b>New Wave</b></a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+      <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
         <ul class="navbar-nav">
           <li class="nav-item active">
             <a class="nav-link" href="/"><i class="fa fa-home fa-home"></i>&nbsp;Главная</a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="/news">Новости</a>
+            <a class="nav-link" href="/news"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Новости</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/about">О нас</a>
+            <a class="nav-link" href="/info"><i class="fa fa-info" aria-hidden="true"></i> Информация</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/#price">Цены</a>
+            <a class="nav-link" href="/lk"><i class="fa fa-user-o" aria-hidden="true"></i> Кабинет</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/FAQ">FAQ</a>
+            <a class="nav-link" href="/login?pagePath=/"><i class="fa fa-sign-in" aria-hidden="true"></i> Войти</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/#contacts">Контакты </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/lk">Личный кабинет</a>
-          </li> &lt;#if adminTag??&gt;${adminTag}
-          <!--#if-->
         </ul>
       </div>
     </div>
@@ -45,7 +40,7 @@
       <div class="row">
         <div class="col-md-12 text-white">
           <img class="img-fluid d-block w-25 py-3 mx-auto px-4" src="static\images\logo_nw.png">
-          <button type="button" class="btn  btn-round btn-light text-dark my-3"><b>Присоединиться &nbsp; &nbsp;</b><i class="fa fa-telegram fa-1x" aria-hidden="true"></i></button>
+          <button type="button" class="btn  btn-round btn-light text-dark my-3"><b>Присоединиться</b> <i class="fa fa-telegram fa-1x" aria-hidden="true"></i></button>
           <h2 class="text-primary py-1">Поймай волну</h2>
           <p class="text-primary text-dark py-1"><b>и заработай на росте рынка криптовалют</b></p>
         </div>
@@ -56,7 +51,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8">
-          <h1 class="text-primary">Мы отправим вам сигнал!</h1>
+          <h1 class="text-primary"><i class="fa fa-bullhorn" aria-hidden="true"></i> Мы отправим вам сигнал! </h1>
           <p class="lead">Человеку, не имеющему опыта,работы на криптовалютном рынке начало торговли представляется крайне сложной задачей. От чего отталкиваться, как сделать правильный выбор, инвестируя в криптовалюты, чтобы не прогадать и преумножить свои средства?
             Наши сигналы содержат информацию о том, какую криптовалюту купить и продать по какой цене, чтобы извлечь максимальную прибыль. Наш анализ основан как на фундаментальных, так и на технических факторах. Анализ одной монеты занимает 1 страницу
             текста, с подробными разъяснениями как для новичков, так и профессионалов. Команда проекта осуществляет регулярный мониторинг сотен блокчейн проектов, выбирая среди них те, что обладают наибольшим потенциалом роста и готова представить вам
@@ -70,19 +65,19 @@
   <div class="py-5  section bg-secondary border border-primary">
     <div class="container">
       <div class="row">
-        <div class="col-md-3">
-          <img src="static/images/screen01.jpg" class="img-fluid "> </div>
-        <div class="col-md-3">
-          <img src="static/images/screen03.jpg" class="img-fluid "> </div>
         <div class="col-md-6">
-          <h1 class="text-primary">Как получить сигнал?</h1>
-          <p class="lead">Откройте &nbsp;мессенджер &nbsp;"Telegarm", &nbsp;найдите нашего бота @TheNewWaveBot &nbsp;и нажмите START. &nbsp;Ну или просто &nbsp;перейдите по этой
+          <h1 class="text-primary"><i class="fa fa-telegram" aria-hidden="true"></i> Как получить сигнал?</h1>
+          <p class="lead">Сообщения с сигналом рассылает наш бот. Откройте &nbsp;мессенджер &nbsp;"Telegarm", &nbsp;найдите нашего бота @TheNewWaveBot &nbsp;и нажмите START. &nbsp;Ну или просто &nbsp;перейдите по этой
             <a href="https://t.me/NewWave_bot">
               <u>ссылке</u>
             </a>.&nbsp;
             <br>&nbsp;Оплатите подписку и ждите сообщения от бота, также вы сможете посмотреть сигналы за последние сутки.&nbsp;
             <br>Если вы не не зарегитрированы ни на одной бирже, и у вас нет кошелька Advcash, то ознакомьтесь с интрукциями здесь: будет ссылочка</p>
         </div>
+        <div class="col-md-3">
+          <img src="static/images/screen01.jpg" class="img-fluid "> </div>
+        <div class="col-md-3">
+          <img src="static/images/screen03.jpg" class="img-fluid "> </div>
       </div>
     </div>
   </div>
@@ -90,7 +85,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h1 class="text-primary">У нас есть выгодная реферальная программа!</h1>
+          <h1 class="text-primary"> <i class="fa fa-users" aria-hidden="true"></i> У нас есть выгодная реферальная программа!</h1>
           <p class="lead">Мы не хотим нанимать &nbsp;штат ленивых менеджеров и тратиться на назойливую рекламу. Мы будем платить вам за приглашенных подписчиков, и начислять бонусы с каждого их платежа : 1-линия – <b><u>10%</u></b>, 2-линия – <b><u>5%</u></b>, 3-линия
             – <b><u>3%</u></b>. (Для начисления, ваша подписка тоже должна быть
             <u>активна</u>).
@@ -106,15 +101,15 @@
   <div class="py-5  section bg-secondary border border-primary" id="fichi">
     <div class="container">
       <div class="row">
+        <div class="col-md-6">
+          <h1 class="text-primary"><i class="fa fa-question-circle-o" aria-hidden="true"></i>&nbsp;Что еще?</h1>
+          <p class="lead">Не знаете что делать с вашей криптовалютой? Во что инвестировать? Нужен совет и &nbsp;консультация? У нас есть отличный чат, доступный только подписчикам, только по делу, без мусора и рекламы!&nbsp;
+            <br>Вы можете &nbsp;заказать аудит вашего портфеля, и в персональном &nbsp;чате наш аналитик проконсультирует, как вам лучше поступить с вашими монетами!</p>
+        </div>
         <div class="col-md-3">
           <img src="./static/images/screen06.jpg" class="img-fluid "> </div>
         <div class="col-md-3">
           <img src="./static/images/screen07.jpg" class="img-fluid"> </div>
-        <div class="col-md-6">
-          <h1 class="text-primary">Что еще?</h1>
-          <p class="lead">Не знаете что делать с вашей криптовалютой? Во что инвестировать? Нужен совет и &nbsp;консультация? У нас есть отличный чат, доступный только подписчикам, только по делу, без мусора и рекламы!&nbsp;
-            <br>Вы можете &nbsp;заказать аудит вашего портфеля, и в персональном &nbsp;чате наш аналитик проконсультирует, как вам лучше поступить с вашими монетами!</p>
-        </div>
       </div>
     </div>
   </div>
@@ -122,7 +117,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h1 class="text-primary">Стоимость услуг</h1>
+          <h1 class="text-primary"><i class="fa fa-money" aria-hidden="true"></i>&nbsp;Стоимость услуг</h1>
           <p class="lead">Цена за подписку может показаться высокой, но мы следим за рынком, знаем что предлагают конкуренты и гарантируем, что Ваша прибыль будет куда выше!&nbsp; </p>
         </div>
       </div>
@@ -183,7 +178,7 @@
         <div class="container">
           <div class="row">
             <div class="col-md-6">
-              <h1 class="text-primary py-5" id="pay">Как оплатить?</h1>
+              <h1 class="text-primary py-5" id="pay"><i class="fa fa-credit-card" aria-hidden="true"></i>&nbsp;Как оплатить?</h1>
               <p class="lead">В данный момент мы принимаем оплату только с кошельков
                 <a href="https://advcash.com">
                   <u>Advcash</u>
@@ -207,40 +202,31 @@
           </div>
         </div>
       </div>
-      <div class="bg-faded py-5 bg-secondary border border-info" id="contacts">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <h1 class="pi-item">Контакты</h1>
-              <p>В данный момент мы не хотим арендовать душный офис.
-                <br>Все впоросы вы можете задать в нашей &nbsp;
-                <a href="https://t.me/NewWave_bot">
-                  <u>группе</u>
-                </a>.
-                <br> Конечно, для серьёзных писем у нас есть почта
-                <a href="mailto:info@new-wave.io">
-                  <u>info@new-wave.io</u>
-                </a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="py-5 bg-primary text-center">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <p class="">© 2017 "New Wave" &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-                <br> </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
     </div>
   </div>
+  <div id="s_footer3" class="bg-dark">
+    <div class="container">
+      <div class="row">
+        <div class="p-4 col-md-12">
+          <h2 class="mb-4 text-secondary"><i class="fa fa-id-card" aria-hidden="true"></i> Контакты</h2>
+          <p>
+            <a href="https://t.me/NewWave_bot" class="text-white"><i class="fa fa-telegram fa-1x" aria-hidden="true"></i> Группа в "Telegram"</a>
+          </p>
+          <p>
+            <a href="mailto:info@new-wave.io" class="text-white"><i class="fa d-inline mr-3 text-secondary fa-envelope-o"></i>info@new-wave.io</a>
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 mt-3">
+          <p class="text-center text-white">© Copyright 2017 "New Wave". </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 </body>
 
 </html>
