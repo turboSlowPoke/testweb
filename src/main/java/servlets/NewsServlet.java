@@ -1,6 +1,5 @@
 package servlets;
 
-import configs.TagsEnum;
 import entitys.User;
 import templayter.PageGenerator;
 import validarors.SessionValidator;

@@ -28,24 +28,32 @@ public class Main {
         staticHolder.setInitParameter("resourceBase", "../resources/main/webcontent/static/");
         staticHolder.setInitParameter("pathInfoOnly", "true");
         contextHandler.addServlet(staticHolder, "/static/*");
-        contextHandler.addServlet(RootServlet.class,"/");
+
         contextHandler.addServlet(SendToAdvcashServlet.class,"/redirectToAdvcash");
         contextHandler.addServlet(SuccessfulPayServlet.class,"/successful");
         contextHandler.addServlet(UnsuccessfulPayServlet.class,"/unsuccessful");
         contextHandler.addServlet(StatusPayServlet.class,"/432757270:AAH-WlbhHAjVRah4VyqqOEKmR-1dR2zeMhs");
         contextHandler.addServlet(StatusPayServlet.class,"/status");
-        contextHandler.addServlet(LoginServlets.class,"/login");
-        contextHandler.addServlet(LkServlet.class,"/lk");
-        contextHandler.addServlet(LkReferalsServlet.class,"/lkreferals");
-        contextHandler.addServlet(LkServicesServlet.class,"/lkservices");
-        contextHandler.addServlet(AdminLkServlet.class,"/admin");
-        contextHandler.addServlet(AdminLkPaimendsServlet.class,"/admin-payments");
-        contextHandler.addServlet(AdminLkTasksServlet.class,"/admin-tasks");
-        contextHandler.addServlet(LogoutServlet.class,"/logout");
+
+        contextHandler.addServlet(RootServlet.class,"/");
         contextHandler.addServlet(InfoAboutServlet.class,"/info-about");
         contextHandler.addServlet(InfoFAQServlet.class,"/info-faq");
         contextHandler.addServlet(InfoContactsServlet.class,"/info-contacts");
         contextHandler.addServlet(NewsServlet.class,"/news");
+
+        contextHandler.addServlet(LoginServlets.class,"/login");
+        contextHandler.addServlet(LogoutServlet.class,"/logout");
+
+        contextHandler.addServlet(LkServlet.class,"/lk");
+        contextHandler.addServlet(LkReferalsServlet.class,"/lkreferals");
+        contextHandler.addServlet(LkServicesServlet.class,"/lkservices");
+
+
+        contextHandler.addServlet(AdminLkServlet.class,"/admin");
+        contextHandler.addServlet(AdminLkPaimendsServlet.class,"/admin-payments");
+        contextHandler.addServlet(AdminLkTasksServlet.class,"/admin-tasks");
+
+
         server.setHandler(contextHandler);
         server.start();
         log.info("*******Server started*********");
