@@ -28,19 +28,20 @@ public class LkServlet extends HttpServlet {
             PersonalData userData = user.getPersonalData();
 
             Map<String,Object> dataMap = new HashMap<>();
+            dataMap.put("userName",user.getLogin());
             dataMap.put("firstName",userData.getFirstName()==null?"-":userData.getFirstName());
             dataMap.put("lastName",userData.getLastName()==null?"-":userData.getLastName());
             dataMap.put("userNameTelegram",userData.getUserNameTelegram()==null?"-":userData.getUserNameTelegram());
             dataMap.put("advcashWallet",userData.getAdvcashWallet()==null?"-":userData.getAdvcashWallet());
             dataMap.put("accountCryptoCompare",userData.getAccountCryptoCompare()==null?"-":userData.getAccountCryptoCompare());
-            dataMap.put("adminTag",user.getTypeUser().equals("manager")? TagsEnum.adminTag:"");
+            dataMap.put("adminTag",user.getTypeUser().equals("manager")? "adminTag":null);
 
             resp.setStatus(HttpServletResponse.SC_OK);
             resp.setContentType("text/html;charset=UTF-8");
             resp.getWriter().append(PageGenerator.instance().getStaticPage("userlk.html",dataMap));
 
         } else {
-            resp.sendRedirect("/login?returnPagePath=lk");
+            resp.sendRedirect("/login");
         }
     }
 

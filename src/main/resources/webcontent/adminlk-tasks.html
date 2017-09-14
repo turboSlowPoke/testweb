@@ -12,34 +12,48 @@
 
 <body>
   <nav id="s_navbar1" class="navbar fixed-top navbar-expand-md navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand text-black" href="#"><i class="fa fa-line-chart" aria-hidden="true"></i> <b>New Wave</b></a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false"
-        aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-      <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
-        <ul class="navbar-nav">
-          <li class="nav-item ">
-            <a class="nav-link" href="/"><i class="fa fa-home fa-home"></i>&nbsp;Главная</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="/news"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Новости</a>
-          </li>
+  <div class="container">
+    <a class="navbar-brand text-black" href="#"><i class="fa fa-line-chart" aria-hidden="true"></i> <b>New Wave</b></a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+    <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/"><i class="fa fa-home fa-home"></i>&nbsp;Главная</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="/news"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Новости</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/info-faq"><i class="fa fa-info" aria-hidden="true"></i> Информация</a>
+        </li>
+        <#if userName??>
           <li class="nav-item">
-            <a class="nav-link" href="/info"><i class="fa fa-info" aria-hidden="true"></i> Информация</a>
+            <a class="nav-link" href="/lk"><i class="fa fa-user" aria-hidden="true"></i> Кабинет ${userName}</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/lk"><i class="fa fa-user-o" aria-hidden="true"></i> Кабинет</a>
-          </li>
+          <#else>
+            <li class="nav-item ">
+              <a class="nav-link" href="/lk"><i class="fa fa-user-o" aria-hidden="true"></i> Кабинет</a>
+            </li>
+        </#if>
+        <#if adminTag??>
           <li class="nav-item active">
             <a class="nav-link" href="/lk"><i class="fa fa-bolt" aria-hidden="true"></i> admin</a>
           </li>
+        </#if>
+        <#if userName??>
           <li class="nav-item">
-            <a class="nav-link" href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Войти</a>
+            <a class="nav-link" href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Выйти</a>
           </li>
-        </ul>
-      </div>
+          <#else>
+            <li class="nav-item">
+              <a class="nav-link" href="/login?pagePath=/"><i class="fa fa-sign-in" aria-hidden="true"></i> Войти</a>
+            </li>
+        </#if>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
   <div class="py-5">
     <div class="container pt-3">
       <div class="row">
@@ -67,7 +81,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12 border border-primary"> &lt;#list newTasks as task&gt; &lt;#if task??&gt;
+        <div class="col-md-12 border border-primary">
           <table class="table">
             <thead>
               <tr>
@@ -78,14 +92,16 @@
               </tr>
             </thead>
             <tbody>
+            <#list newTasks as task>
+              <#if task??>
               <tr>
                 <td>${task.id}</td>
                 <td>${task.dateTimeOpening}</td>
                 <td>${task.type}</td>
                 <td>${task.client}</td>
               </tr>
-              <!--#if-->
-              <!--#list-->
+              </#if>
+              </#list>
             </tbody>
           </table>
         </div>
@@ -96,7 +112,7 @@
     <div class="container">
       <p class="lead text-white bg-primary">&nbsp;Заявки в работе</p>
       <div class="row">
-        <div class="col-md-12 border border-primary"> &lt;#list workTasks as task&gt; &lt;#if task??&gt;
+        <div class="col-md-12 border border-primary">
           <table class="table">
             <thead>
               <tr>
@@ -108,6 +124,8 @@
               </tr>
             </thead>
             <tbody>
+            <#list workTasks as task>
+              <#if task??>
               <tr>
                 <td>${task.id}</td>
                 <td>${task.startDate}</td>
@@ -115,8 +133,8 @@
                 <td>${task.client}</td>
                 <td>${task.manager}</td>
               </tr>
-              <!--#if-->
-              <!--#list-->
+              </#if>
+            </#list>
             </tbody>
           </table>
         </div>
@@ -127,7 +145,7 @@
     <div class="container">
       <p class="lead text-white bg-primary">&nbsp;Закрытые заявки</p>
       <div class="row">
-        <div class="col-md-12 border border-primary"> &lt;#list closeTasks as task&gt; &lt;#if task??&gt;
+        <div class="col-md-12 border border-primary">
           <table class="table">
             <thead>
               <tr>
@@ -140,6 +158,8 @@
               </tr>
             </thead>
             <tbody>
+            <#list closeTasks as task>
+              <#if task??>
               <tr>
                 <td>${task.id}</td>
                 <td>${task.startDate}</td>
@@ -148,8 +168,8 @@
                 <td>${task.client}</td>
                 <td>${task.manager}</td>
               </tr>
-              <!--#if-->
-              <!--#list-->
+              </#if>
+            </#list>
             </tbody>
           </table>
         </div>

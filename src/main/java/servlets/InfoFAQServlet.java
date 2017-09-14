@@ -1,6 +1,5 @@
 package servlets;
 
-import configs.TagsEnum;
 import entitys.User;
 import templayter.PageGenerator;
 import validarors.SessionValidator;
@@ -14,8 +13,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class NewsServlet extends HttpServlet{
-    SessionValidator validator = new SessionValidator();
+public class InfoFAQServlet extends HttpServlet {
+    private SessionValidator validator = new SessionValidator();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(false);
@@ -28,6 +28,6 @@ public class NewsServlet extends HttpServlet{
         }
         resp.setStatus(HttpServletResponse.SC_OK);
         resp.setContentType("text/html;charset=UTF-8");
-        resp.getWriter().append(PageGenerator.instance().getStaticPage("news.html", dataMap));
+        resp.getWriter().append(PageGenerator.instance().getStaticPage("info-faq.html", dataMap));
     }
 }

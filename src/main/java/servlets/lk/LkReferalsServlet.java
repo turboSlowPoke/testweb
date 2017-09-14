@@ -52,11 +52,13 @@ public class LkReferalsServlet extends HttpServlet {
             }
 
             Map<String,Object> dataMap = new HashMap<>();
+            dataMap.put("userName",user.getLogin());
+            dataMap.put("adminTag",user.getTypeUser().equals("manager")? "adminTag":null);
+            dataMap.put("amount",user.getPersonalData().getLocalWallet().toString());
             dataMap.put("referals1",sumReferals1);
             dataMap.put("referals2",sumReferals2);
             dataMap.put("referals3",sumReferals3);
             dataMap.put("paidReferals",sumPaidReferals);
-            dataMap.put("adminTag",user.getTypeUser().equals("manager")? TagsEnum.adminTag:"");
 
             resp.setStatus(HttpServletResponse.SC_OK);
             resp.setContentType("text/html;charset=UTF-8");

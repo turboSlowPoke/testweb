@@ -31,9 +31,10 @@ public class LkServicesServlet extends HttpServlet {
                 onetimeConsultation = user.getServices().getOnetimeConsultation()?"не оплачна":"оплачена";
             }
             Map<String,Object> dataMap = new HashMap<>();
+            dataMap.put("userName",user.getLogin());
+            dataMap.put("adminTag",user.getTypeUser().equals("manager")? "adminTag":null);
             dataMap.put("endDateOfSubscription",endDateOfSubscription);
             dataMap.put("onetimeConsultation",onetimeConsultation);
-            dataMap.put("adminTag",user.getTypeUser().equals("manager")? TagsEnum.adminTag:"");
 
             resp.setStatus(HttpServletResponse.SC_OK);
             resp.setContentType("text/html;charset=UTF-8");

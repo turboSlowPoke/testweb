@@ -3,6 +3,7 @@ package servlets.adminlk;
 import db_services.DbService;
 import entitys.AdvcashTransaction;
 import entitys.LocalTransaction;
+import entitys.User;
 import org.apache.log4j.Logger;
 import templayter.PageGenerator;
 import validarors.SessionValidator;
@@ -28,6 +29,7 @@ public class AdminLkPaimendsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(false);
         if (validator.isAuthorizedAsAdmin(session)){
+            User user = (User) session.getAttribute("user");
             //достаём транзакции AС, конвертируем в AcPayment
             List<AdvcashTransaction> acTransactions = DbService.getInstance().getAcTransacrions();
             List<AcPayment> acPayments =  new ArrayList<>();
@@ -42,6 +44,8 @@ public class AdminLkPaimendsServlet extends HttpServlet {
             }
 
             Map<String,Object> dataMap = new HashMap<>();
+            dataMap.put("userName",user.getLogin());
+            dataMap.put("adminTag",user.getTypeUser().equals("manager")? "adminTag":null);
             dataMap.put("acPayments",acPayments);
             dataMap.put("refPayments",refPayments);
 

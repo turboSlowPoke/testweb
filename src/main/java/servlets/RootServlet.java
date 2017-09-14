@@ -28,37 +28,16 @@ public class RootServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-
         HttpSession session = req.getSession(false);
-        if (validator.isAuthorized(session)){
+        Map<String,Object> dataMap = new HashMap<>();
+
+        if (validator.isAuthorized(session)) {
             User user = (User) session.getAttribute("user");
-            String authForm = "<p class=\"pi-draggable\">Вы вошли как:</p>\n" +
-                        "          <p class=\"pi-draggable lead\">"+user.getLogin()+"</p>\n" +
-                        "          <a href=\"/logout?pagePath=/\" class=\"btn btn-outline-primary pi-draggable\">Выйти</a>";
-
-            Map<String,Object> dataMap = new HashMap<>();
-            dataMap.put("authForm",authForm);
-            dataMap.put("adminTag",user.getTypeUser().equals("manager")?TagsEnum.adminTag:"");
-
-            resp.setStatus(HttpServletResponse.SC_OK);
-            resp.setContentType("text/html;charset=UTF-8");
-            resp.getWriter().append(PageGenerator.instance().getStaticPage("root01.html", dataMap));
-
-        } else {
-            String authForm = " <form class=\"\" action=\"/login\" method=\"post\">\n" +
-                    "            <div class=\"form-group\"> <label>Login</label>\n" +
-                    "              <input type=\"text\" class=\"form-control\" placeholder=\"@login \" name=\"username\"> </div>\n" +
-                    "            <div class=\"form-group\"> <label>Password</label>\n" +
-                    "              <input type=\"password\" class=\"form-control\" placeholder=\"password\" name=\"password\"> </div>\n" +
-                    "              <input type=\"hidden\" name=\"pagePath\" value=\"/\" />" +
-                    "            <button type=\"submit\" class=\"btn btn-primary\">Login</button>\n" +
-                    "          </form>";
-            Map<String,Object> dataMap = new HashMap<>();
-            dataMap.put("authForm",authForm);
-            resp.setStatus(HttpServletResponse.SC_OK);
-            resp.setContentType("text/html;charset=UTF-8");
-            resp.getWriter().append(PageGenerator.instance().getStaticPage("root01.html", dataMap));
+            dataMap.put("userName", user.getLogin());
+            dataMap.put("adminTag", user.getTypeUser().equals("manager") ? "adminTrue" : null);
         }
+        resp.setStatus(HttpServletResponse.SC_OK);
+        resp.setContentType("text/html;charset=UTF-8");
+        resp.getWriter().append(PageGenerator.instance().getStaticPage("root01.html", dataMap));
     }
 }

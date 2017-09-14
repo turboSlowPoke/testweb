@@ -5,48 +5,68 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
-  <link rel="stylesheet" href="./static/styles/info-faq.css" type="text/css"> </head>
+  <link rel="stylesheet" href="./static/styles/info-faq.css" type="text/css">
+  <link rel="icon" href="./static/images/logo_nw_16х16.png">
+  <title>New Wave</title>
+</head>
 
 <body>
-  <nav id="s_navbar1" class="navbar fixed-top navbar-expand-md navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand text-black" href="#"><i class="fa fa-line-chart" aria-hidden="true"></i> <b>New Wave</b></a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false"
-        aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-      <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
-        <ul class="navbar-nav">
-          <li class="nav-item ">
-            <a class="nav-link" href="/"><i class="fa fa-home fa-home"></i>&nbsp;Главная</a>
+<nav id="s_navbar1" class="navbar fixed-top navbar-expand-md navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand text-black" href="#"><i class="fa fa-line-chart" aria-hidden="true"></i> <b>New Wave</b></a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+    <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/"><i class="fa fa-home fa-home"></i>&nbsp;Главная</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="/news"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Новости</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/info-faq"><i class="fa fa-info" aria-hidden="true"></i> Информация</a>
+        </li>
+        <#if userName??>
+          <li class="nav-item">
+            <a class="nav-link" href="/lk"><i class="fa fa-user" aria-hidden="true"></i> Кабинет ${userName}</a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="/news"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Новости</a>
-          </li>
+          <#else>
+            <li class="nav-item">
+              <a class="nav-link" href="/lk"><i class="fa fa-user-o" aria-hidden="true"></i> Кабинет</a>
+            </li>
+        </#if>
+        <#if adminTag??>
           <li class="nav-item active">
-            <a class="nav-link" href="/info"><i class="fa fa-info" aria-hidden="true"></i> Информация</a>
+            <a class="nav-link" href="/admin"><i class="fa fa-bolt" aria-hidden="true"></i> admin</a>
           </li>
+        </#if>
+        <#if userName??>
           <li class="nav-item">
-            <a class="nav-link" href="/lk"><i class="fa fa-user-o" aria-hidden="true"></i> Кабинет</a>
+            <a class="nav-link" href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Выйти</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/login?pagePath=/"><i class="fa fa-sign-in" aria-hidden="true"></i> Войти</a>
-          </li>
-        </ul>
-      </div>
+          <#else>
+            <li class="nav-item">
+              <a class="nav-link" href="/login?pagePath=/"><i class="fa fa-sign-in" aria-hidden="true"></i> Войти</a>
+            </li>
+        </#if>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
   <div class="pt-5">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <ul class="nav nav-tabs">
             <li class="nav-item">
-              <a href="/lk" class="nav-link text-primary">О нас</a>
+              <a href="/info-FAQ" class="active nav-link ">FAQ</a>
             </li>
             <li class="nav-item">
-              <a href="/lkreferals" class="active nav-link">FAQ</a>
+              <a href="/info-about" class="nav-link text-primary">О нас</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-primary" href="/lkservices">Контакты</a>
+              <a class="nav-link text-primary" href="/info-contacts">Контакты</a>
             </li>
           </ul>
         </div>
@@ -57,7 +77,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <p class="lead bg-primary text-white">О «ПРОЕКТЕ» </p>
+          <p class="lead bg-primary text-white"> О «ПРОЕКТЕ» </p>
           <ul class="border border-primary">
             <li><b>Что представляет собой проект?</b>
               <br><i>«New Wave» предоставляет сигналы на покупку и продажу криптовалют на возмездной основе для торговли на биржах, а так же для обмена криптовалют.</i></li>
@@ -85,7 +105,7 @@
             <li><b>Обязательно вводить номер кошелька advcash?
               <br></b>Если Вы оплачивали подписку с того кошелька, на который хотите получать реферальное вознаграждение – не обязательно, все произойдет автоматически, в противном случае нужно внести данные о кошельке в разделе настроек бота.</li>
           </ul>
-          <p class="lead bg-primary text-white">ПРО ОПЛАТУ </p>
+          <p class="lead bg-primary text-white"> ПРО ОПЛАТУ </p>
           <ul class="border border-primary">
             <li><b>Возможно ли исопльзовать для оплаты другие платежные системы или другие валюты?
               <br></b>Оплата принимается только в долларах и через систему advcash.</li>
@@ -94,7 +114,7 @@
             <li><b>Прошло более 24 часов я не начал получать сигналы по подписке.
               <br></b>Обратитесь, пожалуйста в тех поддержку</li>
           </ul>
-          <p class="lead bg-primary text-white">ПРО РЕФЕРАЛЬНУЮ СИСТЕМУ </p>
+          <p class="lead bg-primary text-white"> ПРО РЕФЕРАЛЬНУЮ СИСТЕМУ </p>
           <ul class="border border-primary">
             <li><b>Сколько линий в реферально системе?
               <br></b>В реферально системе 3 уровня, все 3 уровня доступны Вам сразу.</li>
@@ -108,7 +128,7 @@
               <br></b>Вы можете заказать выплату бонусов в подразделе «Мои бонусы» партнерской программы, выплата бонусов происходит по выходным, с возможным отклонением до понедельника – вторника. Специфика вывода такова, что вы можете заказать только
               вывод всех бонусов, накопившихся с последней выплаты, учтется сумма, актуальная на момент выплаты.</li>
           </ul>
-          <p class="lead bg-primary text-white">ОБЩИЕ ВПОРОСЫ</p>
+          <p class="lead bg-primary text-white"> ОБЩИЕ ВПОРОСЫ</p>
           <ul class="border border-primary">
             <li><b>Выгоднее покупать сигналы на бОльший срок?
               <br></b>Да, пакет 600$мес*12 мес = 7200$ в год, пакет 800$ 2 мес * 12 мес = 4800$ в год, пакет 1000$ 3 мес = 4000$ в год</li>
@@ -120,25 +140,11 @@
       </div>
     </div>
   </div>
-  <div id="s_footer3" class="bg-dark">
-    <div class="container">
-      <div class="row">
-        <div class="p-4 col-md-12">
-          <h2 class="mb-4 text-secondary"><i class="fa fa-id-card" aria-hidden="true"></i> Контакты</h2>
-          <p>
-            <a href="https://t.me/NewWave_bot" class="text-white"><i class="fa fa-telegram fa-1x" aria-hidden="true"></i> Группа в "Telegram"</a>
-          </p>
-          <p>
-            <a href="mailto:info@new-wave.io" class="text-white"><i class="fa d-inline mr-3 text-secondary fa-envelope-o"></i>info@new-wave.io</a>
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12 mt-3">
-          <p class="text-center text-white">© Copyright 2017 "New Wave". </p>
-        </div>
-      </div>
-    </div>
+  <div id="s_footer3" class="bg-dark pi-draggable">
+    <p class="mx-auto pt-3 w-100 py-4">
+      <a href="https://t.me/NewWave_bot" class="px-2 mx-4 text-info"><i class="fa fa-telegram fa-1x" aria-hidden="true"></i>&nbsp; &nbsp;Группа в "Telegram"</a>
+      <a href="mailto:info@new-wave.io" class="mx-4 text-info"><i class="fa d-inline mr-3 text-secondary fa-envelope-o"></i>info@new-wave.io</a>
+    </p>
   </div>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>

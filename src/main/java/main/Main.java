@@ -42,8 +42,9 @@ public class Main {
         contextHandler.addServlet(AdminLkPaimendsServlet.class,"/admin-payments");
         contextHandler.addServlet(AdminLkTasksServlet.class,"/admin-tasks");
         contextHandler.addServlet(LogoutServlet.class,"/logout");
-        contextHandler.addServlet(faqServlet.class,"/FAQ");
-        contextHandler.addServlet(aboutServlet.class,"/about");
+        contextHandler.addServlet(InfoAboutServlet.class,"/info-about");
+        contextHandler.addServlet(InfoFAQServlet.class,"/info-faq");
+        contextHandler.addServlet(InfoContactsServlet.class,"/info-contacts");
         contextHandler.addServlet(NewsServlet.class,"/news");
         server.setHandler(contextHandler);
         server.start();
