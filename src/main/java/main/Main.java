@@ -8,9 +8,11 @@ import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import servlets.*;
+import servlets.adminlk.AddNewsServlet;
 import servlets.adminlk.AdminLkPaimendsServlet;
 import servlets.adminlk.AdminLkServlet;
 import servlets.adminlk.AdminLkTasksServlet;
+import servlets.lk.ChangeDataServlet;
 import servlets.lk.LkReferalsServlet;
 import servlets.lk.LkServicesServlet;
 import servlets.lk.LkServlet;
@@ -47,11 +49,13 @@ public class Main {
         contextHandler.addServlet(LkServlet.class,"/lk");
         contextHandler.addServlet(LkReferalsServlet.class,"/lkreferals");
         contextHandler.addServlet(LkServicesServlet.class,"/lkservices");
+        contextHandler.addServlet(ChangeDataServlet.class,"/changedata");
 
 
         contextHandler.addServlet(AdminLkServlet.class,"/admin");
         contextHandler.addServlet(AdminLkPaimendsServlet.class,"/admin-payments");
         contextHandler.addServlet(AdminLkTasksServlet.class,"/admin-tasks");
+        contextHandler.addServlet(AddNewsServlet.class,"/addnews");
 
 
         server.setHandler(contextHandler);

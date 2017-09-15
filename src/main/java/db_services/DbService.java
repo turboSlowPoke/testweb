@@ -236,4 +236,19 @@ public class DbService {
         em.close();
         return tasks;
     }
+
+    public synchronized void updateUser(PersonalData personalData) {
+        EntityManager em = managerFactory.createEntityManager();
+        EntityTransaction tr = em.getTransaction();
+        tr.begin();
+        try {
+            em.merge(personalData);
+            tr.commit();
+        }catch (Exception e){
+            log.error("Ошибка при слиянии сущностей");
+            tr.rollback();
+        }
+        em.clear();
+        em.close();
+    }
 }

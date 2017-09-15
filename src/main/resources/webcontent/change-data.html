@@ -11,60 +11,65 @@
 </head>
 
 <body class="w-50 mx-auto">
-  <nav id="s_navbar1" class="navbar fixed-top navbar-expand-md navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand text-black" href="#"><i class="fa fa-line-chart" aria-hidden="true"></i> <b>New Wave</b></a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false"
-        aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-      <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
-        <ul class="navbar-nav">
+<nav id="s_navbar1" class="navbar fixed-top navbar-expand-md navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand text-black" href="#"><i class="fa fa-line-chart" aria-hidden="true"></i> <b>New Wave</b></a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+    <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/"><i class="fa fa-home fa-home"></i>&nbsp;Главная</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="/news"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Новости</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/info-faq"><i class="fa fa-info" aria-hidden="true"></i> Информация</a>
+        </li>
+        <#if userName??>
           <li class="nav-item active">
-            <a class="nav-link" href="/"><i class="fa fa-home fa-home"></i>&nbsp;Главная</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="/news"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Новости</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/info"><i class="fa fa-info" aria-hidden="true"></i> Информация</a>
-          </li> &lt;#if userName??&gt;
-          <li class="nav-item">
             <a class="nav-link" href="/lk"><i class="fa fa-user" aria-hidden="true"></i> Кабинет ${userName}</a>
-          </li> &lt;#else&gt;
-          <li class="nav-item">
-            <a class="nav-link" href="/lk"><i class="fa fa-user-o" aria-hidden="true"></i> Кабинет</a>
           </li>
-          <!--#if-->&lt;#if adminTag??&gt;
-          <li class="nav-item active">
-            <a class="nav-link" href="/lk"><i class="fa fa-bolt" aria-hidden="true"></i> admin</a>
+          <#else>
+            <li class="nav-item ">
+              <a class="nav-link" href="/lk"><i class="fa fa-user-o" aria-hidden="true"></i> Кабинет</a>
+            </li>
+        </#if>
+        <#if adminTag??>
+          <li class="nav-item ">
+            <a class="nav-link" href="/admin"><i class="fa fa-bolt" aria-hidden="true"></i> admin</a>
           </li>
-          <!--#if-->&lt;#if userNane??&gt;
+        </#if>
+        <#if userName??>
           <li class="nav-item">
-            <a class="nav-link" href="/login?pagePath=/"><i class="fa fa-sign-out" aria-hidden="true"></i> Выйти</a>
-          </li> &lt;#else&gt;
-          <li class="nav-item">
-            <a class="nav-link" href="/login?pagePath=/"><i class="fa fa-sign-in" aria-hidden="true"></i> Войти</a>
+            <a class="nav-link" href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Выйти</a>
           </li>
-          <!--#if-->
-        </ul>
-      </div>
+          <#else>
+            <li class="nav-item">
+              <a class="nav-link" href="/login?pagePath=/"><i class="fa fa-sign-in" aria-hidden="true"></i> Войти</a>
+            </li>
+        </#if>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
   <div id="s_form2" class="bg-light py-5">
     <div class="container pt-5">
       <div class="row">
         <div class="col-md-12">
           <p id="c_lead" class="lead bg-primary text-white">&nbsp; Внесите изменения</p>
-          <form class="" action="/lk-changedata" method="post">
-            <div class="form-group w-50"> <label for="InputName">&nbsp;Ваше Имя</label>
+          <form class="" action="/changedata" method="post">
+            <div class="form-group "> <label for="InputName">&nbsp;Имя</label>
               <input type="text" class="form-control" id="InputName" placeholder="${firstName}" value="${firstName}" name="firstName"> </div>
-            <div class="form-group w-50"> <label for="InputName1">&nbsp;Ваше Фамилия</label>
+            <div class="form-group "> <label for="InputName1">&nbsp;Фамилия</label>
               <input type="text" class="form-control" id="InputName1" placeholder="${lastName}" value="${lastName}" name="lastName"> </div>
-            <div class="form-group w-50"> <label for="InputName2">&nbsp;Кошелёк Advcash</label>
+            <div class="form-group "> <label for="InputName2">&nbsp;Кошелёк Advcash</label>
               <input type="text" class="form-control" id="InputName2" placeholder="${acWallet}" value="${acWallet}" name="acWallet" > </div>
-            <div class="form-group w-50"> <label for="InputName3">&nbsp;Аккаунт Сryptocompare	</label>
+            <div class="form-group "> <label for="InputName3">&nbsp;Аккаунт Сryptocompare	</label>
               <input type="text" class="form-control" id="InputName3" placeholder="${cryptoCompare}" value="${cryptoCompare}" name="cryptoCompare"> </div>
-            <div class="form-group w-50"> <label for="InputEmail14">&nbsp;Email address</label>
-              <input type="email" class="form-control" id="InputEmail14" value="${cryptoCompare}" placeholder="${email}"> </div>
+            <div class="form-group "> <label for="InputEmail14">&nbsp;Email address</label>
+              <input type="email" class="form-control" id="InputEmail14" value="${email}" placeholder="${email}" name="email"> </div>
             <button type="submit" class="btn btn-primary">Сохранить</button>
           </form>
         </div>

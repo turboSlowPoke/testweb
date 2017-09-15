@@ -1,5 +1,6 @@
 package servlets.lk;
 
+import db_services.DbService;
 import entitys.PersonalData;
 import entitys.User;
 import org.apache.log4j.Logger;
@@ -33,7 +34,7 @@ public class ChangeDataServlet extends HttpServlet{
             dataMap.put("lastName",userData.getLastName()==null?"-":userData.getLastName());
             dataMap.put("acWallet",userData.getAdvcashWallet()==null?"-":userData.getAdvcashWallet());
             dataMap.put("cryptoCompare",userData.getAccountCryptoCompare()==null?"-":userData.getAccountCryptoCompare());
-            dataMap.put("email",userData.getEmail()!=null?userData.getEmail():"-");
+            dataMap.put("email",userData.getEmail()!=null?userData.getEmail():"no@email");
 
             dataMap.put("adminTag",user.getTypeUser().equals("manager")? "adminTag":null);
             dataMap.put("userName",user.getLogin());
@@ -53,6 +54,7 @@ public class ChangeDataServlet extends HttpServlet{
         if (validator.isAuthorized(session)){
             User user = (User) session.getAttribute("user");
             log.info("Пришла форма для смены данных для юзера"+user.getLogin());
+            PersonalData personalData = user.getPersonalData();
 
             String firstName= req.getParameter("firstName");
             String lastName = req.getParameter("lastName");
@@ -60,7 +62,23 @@ public class ChangeDataServlet extends HttpServlet{
             String cryptoCompare = req.getParameter("cryptoCompare");
             String email = req.getParameter("email");
 
+            System.out.println(firstName);
+            System.out.println(lastName);
+            System.out.println(acWallet);
+            System.out.println(cryptoCompare);
+            System.out.println(email);
 
+            personalData.setFirstName(stringIsValid(firstName)?firstName:personalData.getFirstName());
+            personalData.setLastName(stringIsValid(lastName)?lastName:personalData.getLastName());
+            personalData.setAdvcashWallet(stringIsValid(acWallet)?acWallet:personalData.getAdvcashWallet());
+            personalData.setAccountCryptoCompare(stringIsValid(cryptoCompare)?cryptoCompare:personalData.getAccountCryptoCompare());
+            personalData.setEmail(emailIsValid(email)?email:personalData.getEmail());
+
+            DbService.getInstance().updateUser(personalData);
+            log.info("Данные юзера "+user+" обновлены");
+            resp.sendRedirect("/lk");
+        } else {
+            resp.sendRedirect("/login");
         }
 
     }
@@ -78,6 +96,26 @@ public class ChangeDataServlet extends HttpServlet{
             }catch (Exception e){
                 log.warn("В string какаято фигня"+string);
             }
+        }else {
+            check=true;
+        }
+        return check;
+    }
+    private Boolean emailIsValid(String email){
+        Boolean check = false;
+        if (email!=null){
+            String p = "\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*\\.\\w{2,4}";
+            Pattern pattern = Pattern.compile(p,Pattern.UNICODE_CHARACTER_CLASS);
+            try {
+                Matcher matcher = pattern.matcher(email);
+                if (matcher.matches()) {
+                    check=true;
+                }
+            }catch (Exception e){
+                log.warn("В email какаято фигня"+email);
+            }
+        }else {
+            check=true;
         }
         return check;
     }

@@ -29,6 +29,9 @@ dependencies {
     compile group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.4.6.v20170531'
     // https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-servlet
     compile group: 'org.eclipse.jetty', name: 'jetty-servlet', version: '9.4.6.v20170531'
+    // https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-annotations
+    compile group: 'org.eclipse.jetty', name: 'jetty-annotations', version: '9.4.6.v20170531'
+
     // https://mvnrepository.com/artifact/org.freemarker/freemarker
     compile group: 'org.freemarker', name: 'freemarker', version: '2.3.23'
     // https://mvnrepository.com/artifact/org.jsoup/jsoup
