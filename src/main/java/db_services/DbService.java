@@ -251,4 +251,54 @@ public class DbService {
         em.clear();
         em.close();
     }
+
+    public synchronized void addNews(News news) {
+        EntityManager em = managerFactory.createEntityManager();
+        EntityTransaction tr = em.getTransaction();
+        tr.begin();
+        try {
+            em.persist(news);
+            tr.commit();
+        }catch (Exception e){
+            log.error("Ошибка при сохранении новости "+news);
+            tr.rollback();
+        }
+        em.clear();
+        em.close();
+    }
+
+    public synchronized List<News> getNews() {
+        EntityManager em = managerFactory.createEntityManager();
+        Query query = em.createQuery("SELECT n FROM News n ORDER BY n.dateTime DESC" );
+        List<News> newsList  = query.getResultList();
+        em.clear();
+        em.close();
+        return newsList;
+    }
+
+    public synchronized News getNews(Integer id){
+        EntityManager em = managerFactory.createEntityManager();
+        News news = em.find(News.class,id);
+        em.clear();
+        em.close();
+        return news;
+    }
+
+    public synchronized void deleteNews(Integer id) {
+        EntityManager em = managerFactory.createEntityManager();
+        EntityTransaction tr = em.getTransaction();
+        News news = em.find(News.class,id);
+        tr.begin();
+        try {
+            em.remove(news);
+            tr.commit();
+            System.out.println("Удалил новость");
+        }catch (Exception e){
+            System.out.println("не сог удалить новость");
+            e.printStackTrace();
+            tr.rollback();
+        }
+        em.clear();
+        em.close();
+    }
 }

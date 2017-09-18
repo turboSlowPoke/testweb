@@ -8,19 +8,20 @@ import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import servlets.*;
-import servlets.adminlk.AddNewsServlet;
-import servlets.adminlk.AdminLkPaimendsServlet;
-import servlets.adminlk.AdminLkServlet;
-import servlets.adminlk.AdminLkTasksServlet;
+import servlets.adminlk.*;
 import servlets.lk.ChangeDataServlet;
 import servlets.lk.LkReferalsServlet;
 import servlets.lk.LkServicesServlet;
 import servlets.lk.LkServlet;
 
+import javax.servlet.MultipartConfigElement;
+
 
 public class Main {
     private static final Logger log = Logger.getLogger(Main.class);
     public static void main(String[] args) throws Exception {
+
+
         DbService.getInstance();
         System.out.println("dbservice started");
         Server server = new Server(80);
@@ -55,7 +56,11 @@ public class Main {
         contextHandler.addServlet(AdminLkServlet.class,"/admin");
         contextHandler.addServlet(AdminLkPaimendsServlet.class,"/admin-payments");
         contextHandler.addServlet(AdminLkTasksServlet.class,"/admin-tasks");
-        contextHandler.addServlet(AddNewsServlet.class,"/addnews");
+        //включим multipart для загрузки картинок
+        ServletHolder upLoadFilesHolder = new ServletHolder(AddNewsServlet.class);
+        upLoadFilesHolder.getRegistration().setMultipartConfig(new MultipartConfigElement("./", 1048576, 1048576, 262144));
+        contextHandler.addServlet(upLoadFilesHolder,"/addnews");
+        contextHandler.addServlet(DeleteNews.class,"/deletenews");
 
 
         server.setHandler(contextHandler);

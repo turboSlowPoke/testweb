@@ -37,7 +37,7 @@
             </li>
         </#if>
         <#if adminTag??>
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="/admin"><i class="fa fa-bolt" aria-hidden="true"></i> admin</a>
           </li>
         </#if>
@@ -54,33 +54,37 @@
     </div>
   </div>
 </nav>
-  <div class="pt-5 py-1">
+<div class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12"></div>
+    </div>
+  </div>
+</div>
+<#if adminTag??><p><a href="/addnews">Добавить новость</a> </p></#if>
+
+<#list newsList as news>
+  <div class="py-2">
     <div class="container border border-info">
-      <p class="lead text-white my-5 bg-primary"> &nbsp;Новость 1 &nbsp;день/месяц/год</p>
+      <p class="lead text-white my-2 bg-primary">&nbsp;${news.header} &nbsp;</p>
+      <h6 id="c_heading" class="pi-draggable" draggable="true">${news.dateTime}</h6>
+      <#if adminTag??><a href="/deletenews?id=${news.id}">Удалить запись</a></#if>
       <div class="row">
         <div class="col-md-12">
           <div class="row">
             <div class="col-md-7">
-              <p class="">&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла
-                Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла
-                Бла Бла&nbsp;Бла Бла Бла</p>
+              <p class="">${news.body}</p>
             </div>
             <div class="col-md-5">
               <div class="pi-draggable" draggable="true">
                 <div class="container-fluid">
                   <div class="row">
-                    <div class="p-0 col-md-4 col-6">
-                      <img src="https://pingendo.github.io/templates/sections/assets/gallery_dogs.jpg" class="img-fluid"> </div>
-                    <div class="col-md-4 col-6 p-0">
-                      <img src="https://pingendo.github.io/templates/sections/assets/gallery_bird.jpg" class="img-fluid"> </div>
-                    <div class="col-md-4 col-6 p-0">
-                      <img src="https://pingendo.github.io/templates/sections/assets/gallery_farm.jpg" class="img-fluid"> </div>
-                    <div class="col-md-4 col-6 p-0">
-                      <img src="https://pingendo.github.io/templates/sections/assets/gallery_girl.jpg" class="img-fluid"> </div>
-                    <div class="col-md-4 col-6 p-0">
-                      <img src="https://pingendo.github.io/templates/sections/assets/gallery_nose.jpg" class="img-fluid"> </div>
-                    <div class="col-md-4 col-6 p-0">
-                      <img src="https://pingendo.github.io/templates/sections/assets/gallery_feet.jpg" class="img-fluid"> </div>
+                    <#if news.countimages &gt; 0>
+                      <#list news.imageNames as imageName>
+                        <div class="p-0 col-md-${12/news.countimages} col-6 border-info p-1">
+                          <img src="./static/newsimages/${imageName}" class="img-fluid"> </div>
+                      </#list>
+                    </#if>
                   </div>
                 </div>
               </div>
@@ -90,136 +94,8 @@
       </div>
     </div>
   </div>
-  <div class="py-1">
-    <div class="container border border-info">
-      <p class="lead text-white my-5 bg-primary"> &nbsp;Новость 2 &nbsp;день/месяц/год</p>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="row">
-            <div class="col-md-7">
-              <p class="">Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла
-                Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла
-                Бла Бла&nbsp;Бла Бла Бла</p>
-            </div>
-            <div class="col-md-5">
-              <div class="py-5 text-center pi-draggable bg-light" draggable="true" id="discover">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-md-3 col-6 p-1">
-                      <a href="#">
-                        <img class="d-block img-fluid" src="https://pingendo.github.io/templates/sections/assets/gallery_1.jpg"> </a>
-                    </div>
-                    <div class="col-md-3 col-6 p-1">
-                      <a href="#">
-                        <img class="d-block img-fluid" src="https://pingendo.github.io/templates/sections/assets/gallery_5.jpg"> </a>
-                    </div>
-                    <div class="col-md-3 col-6 p-1">
-                      <a href="#">
-                        <img class="d-block img-fluid" src="https://pingendo.github.io/templates/sections/assets/gallery_3.jpg"> </a>
-                    </div>
-                    <div class="col-md-3 col-6 p-1">
-                      <a href="#">
-                        <img class="d-block img-fluid" src="https://pingendo.github.io/templates/sections/assets/gallery_4.jpg"> </a>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-3 col-6 p-1">
-                      <a href="#">
-                        <img class="d-block img-fluid" src="https://pingendo.github.io/templates/sections/assets/gallery_6.jpg"> </a>
-                    </div>
-                    <div class="col-md-3 col-6 p-1">
-                      <a href="#">
-                        <img class="d-block img-fluid" src="https://pingendo.github.io/templates/sections/assets/gallery_7.jpg"> </a>
-                    </div>
-                    <div class="col-md-3 col-6 p-1">
-                      <a href="#">
-                        <img class="d-block img-fluid" src="https://pingendo.github.io/templates/sections/assets/gallery_8.jpg"> </a>
-                    </div>
-                    <div class="col-md-3 col-6 p-1">
-                      <a href="#">
-                        <img class="d-block img-fluid" src="https://pingendo.github.io/templates/sections/assets/gallery_9.jpg"> </a>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-3 col-6 p-1">
-                      <a href="#">
-                        <img class="d-block img-fluid" src="https://pingendo.github.io/templates/sections/assets/gallery_10.jpg"> </a>
-                    </div>
-                    <div class="col-md-3 col-6 p-1">
-                      <a href="#">
-                        <img class="d-block img-fluid" src="https://pingendo.github.io/templates/sections/assets/gallery_11.jpg"> </a>
-                    </div>
-                    <div class="col-md-3 col-6 p-1">
-                      <a href="#">
-                        <img class="d-block img-fluid" src="https://pingendo.github.io/templates/sections/assets/gallery_12.jpg"> </a>
-                    </div>
-                    <div class="col-md-3 col-6 p-1">
-                      <a href="#">
-                        <img class="d-block img-fluid" src="https://pingendo.github.io/templates/sections/assets/gallery_13.jpg"> </a>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-3 col-6 p-1">
-                      <a href="#">
-                        <img class="d-block img-fluid" src="https://pingendo.github.io/templates/sections/assets/gallery_15.jpg"> </a>
-                    </div>
-                    <div class="col-md-3 col-6 p-1">
-                      <a href="#">
-                        <img class="d-block img-fluid" src="https://pingendo.github.io/templates/sections/assets/gallery_2.jpg"> </a>
-                    </div>
-                    <div class="col-md-3 col-6 p-1">
-                      <a href="#">
-                        <img class="d-block img-fluid" src="https://pingendo.github.io/templates/sections/assets/gallery_14.jpg"> </a>
-                    </div>
-                    <div class="col-md-3 col-6 p-1">
-                      <a href="#">
-                        <img class="d-block img-fluid" src="https://pingendo.github.io/templates/sections/assets/gallery_16.jpg"> </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="py-1">
-    <div class="container border border-info">
-      <p class="lead text-white my-5 bg-primary"> &nbsp;Новость 3 &nbsp;день/месяц/год</p>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="row">
-            <div class="col-md-7">
-              <p class="">Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла
-                Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла Бла Бла&nbsp;Бла
-                Бла Бла&nbsp;Бла Бла Бла</p>
-            </div>
-            <div class="col-md-5">
-              <div class="pi-draggable" draggable="true">
-                <div class="container-fluid">
-                  <div class="row">
-                    <div class="p-0 col-md-4 col-6">
-                      <img src="https://pingendo.github.io/templates/sections/assets/gallery_dogs.jpg" class="img-fluid"> </div>
-                    <div class="col-md-4 col-6 p-0">
-                      <img src="https://pingendo.github.io/templates/sections/assets/gallery_bird.jpg" class="img-fluid"> </div>
-                    <div class="col-md-4 col-6 p-0">
-                      <img src="https://pingendo.github.io/templates/sections/assets/gallery_farm.jpg" class="img-fluid"> </div>
-                    <div class="col-md-4 col-6 p-0">
-                      <img src="https://pingendo.github.io/templates/sections/assets/gallery_girl.jpg" class="img-fluid"> </div>
-                    <div class="col-md-4 col-6 p-0">
-                      <img src="https://pingendo.github.io/templates/sections/assets/gallery_nose.jpg" class="img-fluid"> </div>
-                    <div class="col-md-4 col-6 p-0">
-                      <img src="https://pingendo.github.io/templates/sections/assets/gallery_feet.jpg" class="img-fluid"> </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+</#list>
+
   <div id="s_footer3" class="bg-dark pi-draggable">
     <p class="mx-auto pt-3 w-100 py-4">
       <a href="https://t.me/NewWave_bot" class="px-2 mx-4 text-info"><i class="fa fa-telegram fa-1x" aria-hidden="true"></i>&nbsp; &nbsp;Группа в "Telegram"</a>

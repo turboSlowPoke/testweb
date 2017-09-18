@@ -1,5 +1,7 @@
 package servlets;
 
+import db_services.DbService;
+import entitys.News;
 import entitys.User;
 import templayter.PageGenerator;
 import validarors.SessionValidator;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class NewsServlet extends HttpServlet{
@@ -25,6 +28,9 @@ public class NewsServlet extends HttpServlet{
             dataMap.put("userName", user.getLogin());
             dataMap.put("adminTag", user.getTypeUser().equals("manager") ? "adminTrue" : null);
         }
+        List<News> newsList = DbService.getInstance().getNews();
+        System.out.println(newsList.get(0));
+        dataMap.put("newsList",newsList);
         resp.setStatus(HttpServletResponse.SC_OK);
         resp.setContentType("text/html;charset=UTF-8");
         resp.getWriter().append(PageGenerator.instance().getStaticPage("news.html", dataMap));
