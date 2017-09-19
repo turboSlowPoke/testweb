@@ -64,8 +64,9 @@
 <#if adminTag??><p><a href="/addnews">Добавить новость</a> </p></#if>
 
 <#list newsList as news>
+  <#if layoutMedia="right">
   <div class="py-2">
-    <div class="container border border-info">
+    <div class="container border border-primary">
       <p class="lead text-white my-2 bg-primary">&nbsp;${news.header} &nbsp;</p>
       <h6 id="c_heading" class="pi-draggable" draggable="true">${news.dateTime}</h6>
       <#if adminTag??><a href="/deletenews?id=${news.id}">Удалить запись</a></#if>
@@ -94,6 +95,63 @@
       </div>
     </div>
   </div>
+  <#elseif layoutMedia="left">
+    <div class="py-5">
+      <div class="container border border-primary">
+        <p class="lead text-white my-2 bg-primary">&nbsp;${news.header} &nbsp;</p>
+        <h6 id="c_heading" class="pi-draggable" draggable="true">${news.dateTime}</h6>
+        <#if adminTag??><a href="/deletenews?id=${news.id}">Удалить запись</a></#if>
+        <div class="row">
+          <div class="col-md-5">
+            <div id="s_gallery3" class="pi-draggable" draggable="true">
+              <div class="container-fluid">
+                <div class="row">
+                  <#if news.countimages &gt; 0>
+                    <#list news.imageNames as imageName>
+                      <div class="p-0 col-md-${12/news.countimages} col-6 border-info p-1">
+                        <img src="./static/newsimages/${imageName}" class="img-fluid"> </div>
+                    </#list>
+                  </#if>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-7"></div>
+        </div>
+      </div>
+    </div>
+  </#elseif>
+  <#elseif layoutMedia="top">
+    <div class="py-5">
+      <div class="container border border-primary">
+        <p class="lead text-white my-2 bg-primary">&nbsp;${news.header} &nbsp;</p>
+        <h6 id="c_heading" class="pi-draggable" draggable="true">${news.dateTime}</h6>
+        <#if adminTag??><a href="/deletenews?id=${news.id}">Удалить запись</a></#if>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-12">
+                <div id="s_gallery3" class="pi-draggable" draggable="true">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <#if news.countimages &gt; 0>
+                        <#list news.imageNames as imageName>
+                          <div class="p-0 col-md-${12/news.countimages} col-6 border-info p-1">
+                            <img src="./static/newsimages/${imageName}" class="img-fluid"> </div>
+                        </#list>
+                      </#if>
+                    </div>
+                  </div>
+                </div>
+                <p id="c_p" class="pi-draggable pt-3">Paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </#elseif>
+ </#if>
 </#list>
 
   <div id="s_footer3" class="bg-dark pi-draggable">
