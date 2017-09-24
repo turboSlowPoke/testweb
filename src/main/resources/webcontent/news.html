@@ -64,7 +64,7 @@
 <#if adminTag??><p><a href="/addnews">Добавить новость</a> </p></#if>
 
 <#list newsList as news>
-  <#if layoutMedia="right">
+  <#if imagesPlace="right">
   <div class="py-2">
     <div class="container border border-primary">
       <p class="lead text-white my-2 bg-primary">&nbsp;${news.header} &nbsp;</p>
@@ -95,7 +95,7 @@
       </div>
     </div>
   </div>
-  <#elseif layoutMedia="left">
+  <#elseif imagesPlace="left">
     <div class="py-5">
       <div class="container border border-primary">
         <p class="lead text-white my-2 bg-primary">&nbsp;${news.header} &nbsp;</p>
@@ -121,7 +121,7 @@
       </div>
     </div>
   </#elseif>
-  <#elseif layoutMedia="top">
+  <#elseif imagesPlace="top">
     <div class="py-5">
       <div class="container border border-primary">
         <p class="lead text-white my-2 bg-primary">&nbsp;${news.header} &nbsp;</p>

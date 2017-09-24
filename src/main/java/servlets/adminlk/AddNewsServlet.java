@@ -41,9 +41,20 @@ public class AddNewsServlet extends HttpServlet {
                 Files.copy(part.getInputStream(), Paths.get("../resources/main/webcontent/static/newsimages/" + imageName), REPLACE_EXISTING);
             }
             String header = req.getParameter("header");
-            String body = req.getParameter("body");
+            String body1 = req.getParameter("body1");
+            String body2 = req.getParameter("body2");
+            String youtube = req.getParameter("youtube");
+            String imagesPlace = req.getParameter("imagesPlace");
+            String youtubePlace = req.getParameter("youtubePlace");
+
             LocalDateTime dateTime = LocalDateTime.now();
-            News news = new News(dateTime, header, body, imageNames);
+            News news = new News(dateTime, header, body1,body2, imageNames);
+            if (youtube!=null&&youtube.length()>0)
+                news.setYoutube(youtube);
+            if (imagesPlace!=null&&imagesPlace.length()>0)
+                news.setImagesPlace(imagesPlace);
+            if (youtubePlace!=null&&youtube.length()>0)
+                news.setYoutubePlace(youtubePlace);
 
             System.out.println(news);
 

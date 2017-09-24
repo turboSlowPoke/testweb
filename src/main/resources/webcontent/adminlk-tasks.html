@@ -128,7 +128,7 @@
               <#if task??>
               <tr>
                 <td>${task.id}</td>
-                <td>${task.startDate}</td>
+                <td><#if task.dateTimeOpening??>${task.dateTimeOpening}</#if></td>
                 <td>${task.type}</td>
                 <td>${task.client}</td>
                 <td>${task.manager}</td>
@@ -162,7 +162,7 @@
               <#if task??>
               <tr>
                 <td>${task.id}</td>
-                <td>${task.startDate}</td>
+                <td>${task.dateTimeOpening}</td>
                 <td>${task.closeDate}</td>
                 <td>${task.type}</td>
                 <td>${task.client}</td>

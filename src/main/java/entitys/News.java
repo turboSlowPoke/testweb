@@ -16,22 +16,30 @@ public class News {
     @Column(name = "header")
     private String header;
     @Lob
-    @Column(name = "body",columnDefinition = "TEXT")
-    private String body;
+    @Column(name = "body1",columnDefinition = "TEXT")
+    private String body1;
+    @Column(name = "body2",columnDefinition = "TEXT")
+    private String body2;
     @ElementCollection
     private List<String> imageNames;
     @Column(name = "countimages")
     private int countimages;
-    @Column(name = "layoutMedia")
-    private String layoutMedia = "right"; //left,top,bottom,center
+    @Column(name = "imagesPlace")
+    private String imagesPlace; //left,top,bottom,center
+    @Column(name = "youtube")
+    private String youtube;
+    @Column(name = "youtubePlace")
+    private String youtubePlace;
+
 
     public News() {
     }
 
-    public News(LocalDateTime dateTime, String header, String body, List<String> imageNames) {
+    public News(LocalDateTime dateTime, String header, String body1, String body2, List<String> imageNames) {
         this.dateTime = dateTime;
         this.header = header;
-        this.body = body;
+        this.body1 = body1;
+        this.body2 = body2;
         this.imageNames = imageNames;
         this.countimages = imageNames!=null?imageNames.size():0;
     }
@@ -47,8 +55,12 @@ public class News {
         return header;
     }
 
-    public String getBody() {
-        return body;
+    public String getBody1() {
+        return body1;
+    }
+
+    public String getBody2() {
+        return body2;
     }
 
     public List<String> getImageNames() {
@@ -67,18 +79,35 @@ public class News {
         this.countimages = countimages;
     }
 
-    public String getLayoutMedia() {
-        return layoutMedia;
+    public String getImagesPlace() {
+        return imagesPlace;
     }
 
-    public void setLayoutMedia(String layoutMedia) {
-        this.layoutMedia = layoutMedia;
+    public void setImagesPlace(String imagesPlace) {
+        this.imagesPlace = imagesPlace;
+    }
+
+    public String getYoutube() {
+        return youtube;
+    }
+
+    public void setYoutube(String youtube) {
+        this.youtube = youtube;
+    }
+
+    public String getYoutubePlace() {
+        return youtubePlace;
+    }
+
+    public void setYoutubePlace(String youtubePlace) {
+        this.youtubePlace = youtubePlace;
     }
 
     @Override
     public String toString() {
-        return "\nheader: "+header
-                +"\nbody: "+body
+        return "\nid: "+id
+                +"\nheader: "+header
+                +"\ndatetime: "+dateTime
                 +"\ncountimages="+countimages;
     }
 }
