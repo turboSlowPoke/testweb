@@ -27,7 +27,7 @@ public class AddNewsServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        //if (validator.isAuthorizedAsAdmin(session)) {
+        if (validator.isAuthorizedAsAdmin(session)) {
             Collection<Part> parts = req.getParts();
             List<String> imageNames = new ArrayList<>();
             for (Part part : parts) {
@@ -66,29 +66,32 @@ public class AddNewsServlet extends HttpServlet {
             resp.setStatus(HttpServletResponse.SC_OK);
             resp.setContentType("text/html;charset=UTF-8");
             resp.getWriter().append(PageGenerator.instance().getStaticPage("news-check.html",dataMap));
-       // } else
-         //   resp.sendRedirect("/login");
+        } else
+            resp.sendRedirect("/login");
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        News news = (News) session.getAttribute("precheckNews");
-        if (news!=null){
-            String publish = req.getParameter("publish");
-            if (publish!=null&&publish.equals("true")){
-                DbService.getInstance().addNews(news);
-                session.removeAttribute("precheckNews");
-                resp.sendRedirect("/news");
-            }else {
-                session.removeAttribute("precheckNews");
-                resp.sendRedirect("/addnews");
+        if (validator.isAuthorizedAsAdmin(session)) {
+            News news = (News) session.getAttribute("precheckNews");
+            if (news != null) {
+                String publish = req.getParameter("publish");
+                if (publish != null && publish.equals("true")) {
+                    DbService.getInstance().addNews(news);
+                    session.removeAttribute("precheckNews");
+                    resp.sendRedirect("/news");
+                } else {
+                    session.removeAttribute("precheckNews");
+                    resp.sendRedirect("/addnews");
+                }
+            } else {
+                resp.setStatus(HttpServletResponse.SC_OK);
+                resp.setContentType("text/html;charset=UTF-8");
+                resp.getWriter().append(PageGenerator.instance().getStaticPage("add-news.html", null));
             }
-        }else {
-            resp.setStatus(HttpServletResponse.SC_OK);
-            resp.setContentType("text/html;charset=UTF-8");
-            resp.getWriter().append(PageGenerator.instance().getStaticPage("add-news.html", null));
-        }
+        }else
+            resp.sendRedirect("/login");
     }
 
 

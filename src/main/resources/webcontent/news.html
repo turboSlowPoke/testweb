@@ -62,117 +62,122 @@
   </div>
 </div>
 <#if adminTag??><p><a href="/addnews">Добавить новость</a> </p></#if>
-
 <#list newsList as news>
-  <#if imagesPlace="right">
-  <div class="py-2">
+  <div class="py-1">
     <div class="container border border-primary">
       <p class="lead text-white my-2 bg-primary">&nbsp;${news.header} &nbsp;</p>
       <h6 id="c_heading" class="pi-draggable" draggable="true">${news.dateTime}</h6>
       <#if adminTag??><a href="/deletenews?id=${news.id}">Удалить запись</a></#if>
-      <div class="row">
-        <div class="col-md-12">
+      <#if news.countimages &gt; 0>
+        <#if news.imagesPlace="right">
           <div class="row">
             <div class="col-md-7">
-              <p class="">${news.body}</p>
+              <#if news.body1??>
+                <p id="c_p1" class="pi-draggable" draggable="true">${news.body1}</p>
+              </#if>
+              <#if news.youtube??>
+                <div class="embed-responsive embed-responsive-16by9 w-75 mx-auto">
+                  ${news.youtube}
+                </div>
+              </#if>
+              <#if news.body2??>
+                <p id="c_p2" class="pi-draggable" draggable="true">${news.body2}</p>
+              </#if>
             </div>
             <div class="col-md-5">
-              <div class="pi-draggable" draggable="true">
+              <div id="s_gallery3" class="pi-draggable">
                 <div class="container-fluid">
                   <div class="row">
-                    <#if news.countimages &gt; 0>
-                      <#list news.imageNames as imageName>
-                        <div class="p-0 col-md-${12/news.countimages} col-6 border-info p-1">
-                          <img src="./static/newsimages/${imageName}" class="img-fluid"> </div>
-                      </#list>
-                    </#if>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <#elseif imagesPlace="left">
-    <div class="py-5">
-      <div class="container border border-primary">
-        <p class="lead text-white my-2 bg-primary">&nbsp;${news.header} &nbsp;</p>
-        <h6 id="c_heading" class="pi-draggable" draggable="true">${news.dateTime}</h6>
-        <#if adminTag??><a href="/deletenews?id=${news.id}">Удалить запись</a></#if>
-        <div class="row">
-          <div class="col-md-5">
-            <div id="s_gallery3" class="pi-draggable" draggable="true">
-              <div class="container-fluid">
-                <div class="row">
-                  <#if news.countimages &gt; 0>
                     <#list news.imageNames as imageName>
                       <div class="p-0 col-md-${12/news.countimages} col-6 border-info p-1">
                         <img src="./static/newsimages/${imageName}" class="img-fluid"> </div>
                     </#list>
-                  </#if>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-7"></div>
-        </div>
-      </div>
-    </div>
-  </#elseif>
-  <#elseif imagesPlace="top">
-    <div class="py-5">
-      <div class="container border border-primary">
-        <p class="lead text-white my-2 bg-primary">&nbsp;${news.header} &nbsp;</p>
-        <h6 id="c_heading" class="pi-draggable" draggable="true">${news.dateTime}</h6>
-        <#if adminTag??><a href="/deletenews?id=${news.id}">Удалить запись</a></#if>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="row">
-              <div class="col-md-12">
-                <div id="s_gallery3" class="pi-draggable" draggable="true">
-                  <div class="container-fluid">
-                    <div class="row">
-                      <#if news.countimages &gt; 0>
-                        <#list news.imageNames as imageName>
-                          <div class="p-0 col-md-${12/news.countimages} col-6 border-info p-1">
-                            <img src="./static/newsimages/${imageName}" class="img-fluid"> </div>
-                        </#list>
-                      </#if>
-                    </div>
                   </div>
                 </div>
-                <p id="c_p" class="pi-draggable pt-3">Paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </#elseif>
- </#if>
-</#list>
+        </#if>
 
-<div class="py-5">
-  <div class="container border border-primary">
-    <p class="lead text-white my-2 bg-primary">&nbsp;${news.header} &nbsp;</p>
-    <h6 id="c_heading" class="pi-draggable" draggable="true">${news.dateTime}</h6>
-    <div class="row">
-      <div class="col-md-12">
-        <p id="c_p" class="pi-draggable" draggable="true">Paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <div id="c_row-1col-a" class="row pi-draggable">
-          <div class="mx-auto col-12 col-sm-12 col-md-8 col-lg-7 col-xl-7">
-            <div id="c_youtube" class="embed-responsive pi-draggable embed-responsive-16by9" draggable="true">
-              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/i__1Z5a9Sak?autoplay=0" allowfullscreen=""> </iframe>
+        <#if news.imagesPlace="left">
+          <div class="row">
+            <div class="col-md-5">
+              <div id="s_gallery3" class="pi-draggable" draggable="true">
+                <div class="container-fluid">
+                  <div class="row">
+                    <#list news.imageNames as imageName>
+                      <div class="p-0 col-md-${12/news.countimages} col-6 border-info p-1">
+                        <img src="./static/newsimages/${imageName}" class="img-fluid"> </div>
+                    </#list>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-7">
+              <#if news.body1??>
+                <p id="c_p1" class="pi-draggable" draggable="true">${news.body1}</p>
+              </#if>
+              <#if news.youtube??>
+                <div class="embed-responsive embed-responsive-16by9 w-75 mx-auto">
+                  ${news.youtube}
+                </div>
+              </#if>
+              <#if news.body2??>
+                <p id="c_p2" class="pi-draggable" draggable="true">${news.body2}</p>
+              </#if>
             </div>
           </div>
-        </div>
-        <p id="c_p" class="pi-draggable" draggable="true">Paragraph. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
+        </#if>
+
+        <#if news.imagesPlace="center">
+          <div class="row">
+            <div class="col-md-12">
+              <#if news.body1??>
+                <p id="c_p1" class="pi-draggable" draggable="true">${news.body1}</p>
+              </#if>
+              <div id="s_gallery" class="pi-draggable w-75 mx-auto" draggable="true">
+                <div class="container-fluid">
+                  <div class="row">
+                    <#list news.imageNames as imageName>
+                      <div class="p-0 col-md-${12/news.countimages} col-6 border-info p-1">
+                        <img src="./static/newsimages/${imageName}" class="img-fluid"> </div>
+                    </#list>
+                  </div>
+                </div>
+              </div>
+              <#if news.youtube??>
+                <div class="embed-responsive embed-responsive-16by9 w-75 mx-auto">
+                  ${news.youtube}
+                </div>
+              </#if>
+              <#if news.body2??>
+                <p id="c_p2" class="pi-draggable" draggable="true">${news.body2}</p>
+              </#if>
+            </div>
+          </div>
+        </#if>
+
+        <#else>
+          <div class="row">
+            <div class="col-md-12">
+              <#if news.body1??>
+                <p id="c_p1" class="pi-draggable" draggable="true">${news.body1}</p>
+              </#if>
+              <#if news.youtube??>
+                <div class="embed-responsive embed-responsive-16by9 w-75 mx-auto">
+                  ${news.youtube}
+                </div>
+              </#if>
+              <#if news.body2??>
+                <p id="c_p2" class="pi-draggable" draggable="true">${news.body2}</p>
+              </#if>
+            </div>
+          </div>
+
+      </#if>
     </div>
   </div>
-</div>
+</#list>
 
   <div id="s_footer3" class="bg-dark pi-draggable">
     <p class="mx-auto pt-3 w-100 py-4">

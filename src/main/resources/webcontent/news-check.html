@@ -14,7 +14,6 @@
     <p class="lead text-white my-2 bg-primary">&nbsp;${news.header} &nbsp;</p>
     <h6 id="c_heading" class="pi-draggable" draggable="true">${news.dateTime}</h6>
     <#if news.countimages &gt; 0>
-
       <#if news.imagesPlace="right">
         <div class="row">
           <div class="col-md-7">
@@ -75,7 +74,7 @@
             </div>
       </#if>
 
-      <#if news.imagesPlace="top">
+      <#if news.imagesPlace="center">
         <div class="row">
           <div class="col-md-12">
             <#if news.body1??>
@@ -102,11 +101,27 @@
           </div>
         </div>
       </#if>
-      <#if news.imagesPlace="center"></#if>
-      
+    <#else>
+        <div class="row">
+          <div class="col-md-12">
+            <#if news.body1??>
+              <p id="c_p1" class="pi-draggable" draggable="true">${news.body1}</p>
+            </#if>
+            <#if news.youtube??>
+              <div class="embed-responsive embed-responsive-16by9 w-75 mx-auto">
+                ${news.youtube}
+              </div>
+            </#if>
+            <#if news.body2??>
+              <p id="c_p2" class="pi-draggable" draggable="true">${news.body2}</p>
+            </#if>
+          </div>
+       </div>
     </#if>
   </div>
 </div>
+<p><a href="/addnews?publish=true">Сохранить</a></p>
+<a href="/addnews?publish=false">Отменить</a>
 
 
 <!--
@@ -138,8 +153,7 @@
     </div>
   </div>
   -->
-  <p><a href="/addnews?publish=true">Сохранить</a></p>
-  <a href="/addnews?publish=false">Отменить</a>
+
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
