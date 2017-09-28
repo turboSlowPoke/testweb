@@ -46,8 +46,6 @@
       </#if>
 
       <#if news.imagesPlace="left">
-        <div class="py-5">
-          <div class="container">
             <div class="row">
               <div class="col-md-5">
                 <div id="s_gallery3" class="pi-draggable" draggable="true">
@@ -75,12 +73,34 @@
                 </#if>
               </div>
             </div>
-          </div>
-        </div>
       </#if>
 
       <#if news.imagesPlace="top">
-
+        <div class="row">
+          <div class="col-md-12">
+            <#if news.body1??>
+              <p id="c_p1" class="pi-draggable" draggable="true">${news.body1}</p>
+            </#if>
+            <div id="s_gallery" class="pi-draggable w-75 mx-auto" draggable="true">
+              <div class="container-fluid">
+                <div class="row">
+                  <#list news.imageNames as imageName>
+                    <div class="p-0 col-md-${12/news.countimages} col-6 border-info p-1">
+                      <img src="./static/newsimages/${imageName}" class="img-fluid"> </div>
+                  </#list>
+                </div>
+              </div>
+            </div>
+            <#if news.youtube??>
+              <div class="embed-responsive embed-responsive-16by9 w-75 mx-auto">
+                ${news.youtube}
+              </div>
+            </#if>
+            <#if news.body2??>
+              <p id="c_p2" class="pi-draggable" draggable="true">${news.body2}</p>
+            </#if>
+          </div>
+        </div>
       </#if>
       <#if news.imagesPlace="center"></#if>
       
