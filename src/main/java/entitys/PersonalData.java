@@ -18,6 +18,8 @@ public class PersonalData implements Serializable {
     private String firstName;
     private String LastName;
     private String advcashWallet;
+    @Column(name = "password")
+    private String password;
     @CollectionTable
     private List<Long> referalsForPrize;
     private int countPrize=10;

@@ -34,7 +34,7 @@ public class DbService {
 
     public synchronized User getUserFromDb(String username) throws NoLoginInDbException {
         EntityManager em = managerFactory.createEntityManager();
-        Query query = em.createQuery("SELECT u FROM User u WHERE u.login=:l ").setParameter("l",username);
+        Query query = em.createQuery("SELECT u FROM User u JOIN u.personalData p  WHERE p.userNameTelegram=:n").setParameter("n",username);
         List<User> users = query.getResultList();
         em.close();
         if (users==null||users.size()!=1)
