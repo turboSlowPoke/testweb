@@ -10,7 +10,7 @@ repositories {
 }
 
 jar {
-    baseName = 'testweb'
+    baseName = 'newwave01'
     version =  '0.0.1'
     manifest {
         attributes(

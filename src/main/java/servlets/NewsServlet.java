@@ -25,11 +25,10 @@ public class NewsServlet extends HttpServlet{
 
         if (validator.isAuthorized(session)) {
             User user = (User) session.getAttribute("user");
-            dataMap.put("userName", user.getLogin());
+            dataMap.put("userName", user.getPersonalData().getUserNameTelegram());
             dataMap.put("adminTag", user.getTypeUser().equals("manager") ? "adminTrue" : null);
         }
         List<News> newsList = DbService.getInstance().getNews();
-        System.out.println(newsList.get(0));
         dataMap.put("newsList",newsList);
         resp.setStatus(HttpServletResponse.SC_OK);
         resp.setContentType("text/html;charset=UTF-8");

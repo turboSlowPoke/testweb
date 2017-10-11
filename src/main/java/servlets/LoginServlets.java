@@ -42,10 +42,12 @@ public class LoginServlets extends HttpServlet {
             try {
                 checkLogin(username); //кинем исключение если логин некорректен
                 String md5Password = getMd5Password(password); //кинем исключение если пароль не корректен
+                System.out.println("Запрашиваем юзера из базы");
 
                 User user = DbService.getInstance().getUserFromDb(username); //исключение если юзера нет
+                System.out.println("Проверяем пароль");
 
-                if (user.getPassword()==null||!user.getPassword().equals(md5Password)) //если у юзера нет пароля или пароли не совпадают, исключение о неправильном пароле
+                if (user.getPersonalData().getPassword()==null||!user.getPersonalData().getPassword().equals(md5Password)) //если у юзера нет пароля или пароли не совпадают, исключение о неправильном пароле
                     throw new WrongPasswordException();
 
                 session = req.getSession();

@@ -37,7 +37,7 @@ public class ChangeDataServlet extends HttpServlet{
             dataMap.put("email",userData.getEmail()!=null?userData.getEmail():"no@email");
 
             dataMap.put("adminTag",user.getTypeUser().equals("manager")? "adminTag":null);
-            dataMap.put("userName",user.getLogin());
+            dataMap.put("userName",user.getPersonalData().getUserNameTelegram());
 
             resp.setStatus(HttpServletResponse.SC_OK);
             resp.setContentType("text/html;charset=UTF-8");
@@ -53,7 +53,7 @@ public class ChangeDataServlet extends HttpServlet{
         HttpSession session = req.getSession(false);
         if (validator.isAuthorized(session)){
             User user = (User) session.getAttribute("user");
-            log.info("Пришла форма для смены данных для юзера"+user.getLogin());
+            log.info("Пришла форма для смены данных для юзера"+user.getPersonalData().getUserNameTelegram());
             PersonalData personalData = user.getPersonalData();
 
             String firstName= req.getParameter("firstName");

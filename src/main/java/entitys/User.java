@@ -20,8 +20,8 @@ public class User implements Serializable {
     private int rightKey;
     private int leftKey;
     private String typeUser = "customer";
-    private String login;
-    private String password;
+    //private String login;
+    //private String password;
 
     @ManyToMany(mappedBy = "users",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<Task> tasks;
@@ -90,7 +90,6 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return " UserID: "+getUserID()
-                +"| Login: "+login
                 +"| Тип: " +typeUser;
     }
 
@@ -118,19 +117,5 @@ public class User implements Serializable {
         this.advcashTransactions.add(acTransaction);
     }
 
-    public String getLogin() {
-        return login;
-    }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

@@ -126,4 +126,8 @@ public class PersonalData implements Serializable {
     public void setAccountCryptoCompare(String accountCryptoCompare) {
         this.accountCryptoCompare = accountCryptoCompare;
     }
+
+    public String getPassword() {
+        return password;
+    }
 }

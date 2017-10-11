@@ -31,7 +31,7 @@ public class LkServicesServlet extends HttpServlet {
                 onetimeConsultation = user.getServices().getOnetimeConsultation()?"не оплачна":"оплачена";
             }
             Map<String,Object> dataMap = new HashMap<>();
-            dataMap.put("userName",user.getLogin());
+            dataMap.put("userName",user.getPersonalData().getUserNameTelegram());
             dataMap.put("adminTag",user.getTypeUser().equals("manager")? "adminTag":null);
             dataMap.put("endDateOfSubscription",endDateOfSubscription);
             dataMap.put("onetimeConsultation",onetimeConsultation);

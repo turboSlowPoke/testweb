@@ -23,7 +23,7 @@ public class InfoAboutServlet extends HttpServlet {
 
         if (validator.isAuthorized(session)) {
             User user = (User) session.getAttribute("user");
-            dataMap.put("userName", user.getLogin());
+            dataMap.put("userName", user.getPersonalData().getUserNameTelegram());
             dataMap.put("adminTag", user.getTypeUser().equals("manager") ? "adminTrue" : null);
         }
         resp.setStatus(HttpServletResponse.SC_OK);

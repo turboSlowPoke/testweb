@@ -53,7 +53,7 @@ public class AdminLkTasksServlet extends HttpServlet {
             }
 
             Map<String,Object> dataMap = new HashMap<>();
-            dataMap.put("userName",user.getLogin());
+            dataMap.put("userName",user.getPersonalData().getUserNameTelegram());
             dataMap.put("adminTag",user.getTypeUser().equals("manager")? "adminTag":null);
             dataMap.put("newTasks",newTasks);
             dataMap.put("workTasks",workTasks);

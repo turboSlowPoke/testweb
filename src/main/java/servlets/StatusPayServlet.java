@@ -43,7 +43,7 @@ public class StatusPayServlet extends HttpServlet {
             String ac_transfer = params.get("ac_transfer")[0];
             String ac_sci_name = params.get("ac_sci_name")[0];
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            LocalDateTime ac_start_date = LocalDateTime.parse(params.get("ac_start_date")[0], formatter);
+            LocalDateTime ac_start_date = LocalDateTime.now();//LocalDateTime.parse(params.get("ac_start_date")[0], formatter);
             String ac_order_id = params.get("ac_order_id")[0];
             String ac_ps = params.get("ac_ps")[0];
             String ac_transaction_status = params.get("ac_transaction_status")[0];

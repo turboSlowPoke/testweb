@@ -62,6 +62,7 @@
   </div>
 </div>
 <#if adminTag??><p><a href="/addnews">Добавить новость</a> </p></#if>
+<#if newsList??>
 <#list newsList as news>
   <div class="py-1">
     <div class="container border border-primary">
@@ -178,6 +179,7 @@
     </div>
   </div>
 </#list>
+</#if>
 
   <div id="s_footer3" class="bg-dark pi-draggable">
     <p class="mx-auto pt-3 w-100 py-4">

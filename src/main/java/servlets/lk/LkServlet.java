@@ -28,12 +28,13 @@ public class LkServlet extends HttpServlet {
             PersonalData userData = user.getPersonalData();
 
             Map<String,Object> dataMap = new HashMap<>();
-            dataMap.put("userName",user.getLogin());
+            dataMap.put("userName",user.getPersonalData().getUserNameTelegram());
             dataMap.put("firstName",userData.getFirstName()==null?"-":userData.getFirstName());
             dataMap.put("lastName",userData.getLastName()==null?"-":userData.getLastName());
             dataMap.put("userNameTelegram",userData.getUserNameTelegram()==null?"-":userData.getUserNameTelegram());
             dataMap.put("advcashWallet",userData.getAdvcashWallet()==null?"-":userData.getAdvcashWallet());
             dataMap.put("accountCryptoCompare",userData.getAccountCryptoCompare()==null?"-":userData.getAccountCryptoCompare());
+            dataMap.put("email",userData.getEmail()==null?"-":userData.getEmail());
             dataMap.put("adminTag",user.getTypeUser().equals("manager")? "adminTag":null);
 
             resp.setStatus(HttpServletResponse.SC_OK);

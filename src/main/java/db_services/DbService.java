@@ -210,8 +210,9 @@ public class DbService {
     public List<AdvcashTransaction> getAcTransacrions() {
         EntityManager em = managerFactory.createEntityManager();
         Query query = em.createQuery("SELECT tr FROM AdvcashTransaction tr WHERE tr.ac_start_date>:t" )
-                .setParameter("t",LocalDateTime.of(2017,8,28,00,00,00));
+                .setParameter("t",LocalDateTime.of(2017,8,27,00,00,00));
         List<AdvcashTransaction> acTransacrions = query.getResultList();
+        System.out.println("actr="+acTransacrions.size());
         em.clear();
         em.close();
         return acTransacrions;
